@@ -1,24 +1,14 @@
+# Ágora
 
-     ,-----.,--.                  ,--. ,---.   ,--.,------.  ,------.
-    '  .--./|  | ,---. ,--.,--. ,-|  || o   \  |  ||  .-.  \ |  .---'
-    |  |    |  || .-. ||  ||  |' .-. |`..'  |  |  ||  |  \  :|  `--, 
-    '  '--'\|  |' '-' ''  ''  '\ `-' | .'  /   |  ||  '--'  /|  `---.
-     `-----'`--' `---'  `----'  `---'  `--'    `--'`-------' `------'
-    ----------------------------------------------------------------- 
+Ágora es un proyecto que se propone crear una plataforma web que permita a sus usuarios informarse y debatir sobre los distintos proyectos de ley vigentes en el Congreso de la República de Colombia. La aplicación presentará un breve resumen de cada proyecto, permitirá votar a favor o en contra de cada proyecto de ley, así como un breve comentario a manera de argumento para que el usuario justifique su opinión.
 
+## Oportunity Alpha
 
-Welcome to your Rails project on Cloud9 IDE!
+La vida política colombiana, en especial en su lado legislativo, tiene una alta complejidad. Sus proyectos de leyes son extensos y complicados, y es difícil para el ciudadano normal mantenerse enterado de qué se discute en el Congreso en el momento. Ágora se presenta como una herramienta para los ciudadanos para poder mantenerse al tanto del trabajo que se realiza dentro del Congreso, así como poder expresar su opinión al respecto y poder 
 
-To get started, just do the following:
+### Desarrolladores
 
-1. Run the project with the "Run Project" button in the menu bar on top of the IDE.
-2. Preview your new app by clicking on the URL that appears in the Run panel below (https://HOSTNAME/).
-
-Happy coding!
-The Cloud9 IDE team
-
-
-## Support & Documentation
-
-Visit http://docs.c9.io for support, or to learn more about using Cloud9 IDE. 
-To watch some training videos, visit http://www.youtube.com/user/c9ide
+Kevin Andrey Herrera Silva
+Rubén Buelvas Villa
+José David Nieto Vitola
+Alejandro Santamaría Pérez
