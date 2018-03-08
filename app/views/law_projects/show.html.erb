@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @law_project.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @law_project.description %>
+</p>
+
+<p>
+  <strong>Publication date:</strong>
+  <%= @law_project.publication_date %>
+</p>
+
+<p>
+  <strong>Yes votes:</strong>
+  <%= @law_project.yes_votes %>
+</p>
+
+<p>
+  <strong>Not votes:</strong>
+  <%= @law_project.not_votes %>
+</p>
+
+<%= link_to 'Edit', edit_law_project_path(@law_project) %> |
+<%= link_to 'Back', law_projects_path %>

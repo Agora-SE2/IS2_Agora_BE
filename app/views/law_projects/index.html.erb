@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Law Projects</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Publication date</th>
+      <th>Yes votes</th>
+      <th>Not votes</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @law_projects.each do |law_project| %>
+      <tr>
+        <td><%= law_project.name %></td>
+        <td><%= law_project.description %></td>
+        <td><%= law_project.publication_date %></td>
+        <td><%= law_project.yes_votes %></td>
+        <td><%= law_project.not_votes %></td>
+        <td><%= link_to 'Show', law_project %></td>
+        <td><%= link_to 'Edit', edit_law_project_path(law_project) %></td>
+        <td><%= link_to 'Destroy', law_project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Law project', new_law_project_path %>
