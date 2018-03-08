@@ -1,0 +1,29 @@
+<%= form_for(@featured_project) do |f| %>
+  <% if @featured_project.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@featured_project.errors.count, "error") %> prohibited this featured_project from being saved:</h2>
+
+      <ul>
+      <% @featured_project.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :year %><br>
+    <%= f.number_field :year %>
+  </div>
+  <div class="field">
+    <%= f.label :week %><br>
+    <%= f.number_field :week %>
+  </div>
+  <div class="field">
+    <%= f.label :day %><br>
+    <%= f.number_field :day %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

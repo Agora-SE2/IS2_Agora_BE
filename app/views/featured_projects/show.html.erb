@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Year:</strong>
+  <%= @featured_project.year %>
+</p>
+
+<p>
+  <strong>Week:</strong>
+  <%= @featured_project.week %>
+</p>
+
+<p>
+  <strong>Day:</strong>
+  <%= @featured_project.day %>
+</p>
+
+<%= link_to 'Edit', edit_featured_project_path(@featured_project) %> |
+<%= link_to 'Back', featured_projects_path %>

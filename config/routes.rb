@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :tags
+  resources :featured_projects
+  resources :opinions
   resources :galleries
   resources :law_projects
   get 'home/index'
