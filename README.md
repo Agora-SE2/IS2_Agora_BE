@@ -8,7 +8,7 @@ La vida política colombiana, en especial en su lado legislativo, tiene una alta
 
 ### Desarrolladores
 
-Kevin Andrey Herrera Silva
-Rubén Buelvas Villa
-José David Nieto Vitola
-Alejandro Santamaría Pérez
+Kevin Andrey Herrera Silva.
+Rubén Buelvas Villa.
+José David Nieto Vitola.
+Alejandro Santamaría Pérez.
