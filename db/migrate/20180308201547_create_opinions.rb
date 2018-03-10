@@ -5,6 +5,7 @@ class CreateOpinions < ActiveRecord::Migration
       t.date :date
       t.integer :like
       t.boolean :pro
+      t.references :law_project, index: true, foreign_key: true
 
       t.timestamps null: false
     end
