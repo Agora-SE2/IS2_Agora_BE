@@ -24,6 +24,6 @@ production:
   adapter: postgresql
   encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  database: corruptometro_production
-  username: corruptometro
-  password: <%= ENV['CORRUPTOMETRO_DATABASE_PASSWORD'] %>
+  database: agora_production
+  username: agora
+  password: <%= ENV['AGORA_DATABASE_PASSWORD'] %>
