@@ -11,21 +11,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180308202526) do
+ActiveRecord::Schema.define(version: 20180310042947) do
 
   create_table "featured_projects", force: :cascade do |t|
     t.integer  "year"
     t.integer  "week"
     t.integer  "day"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "law_project_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
+
+  add_index "featured_projects", ["law_project_id"], name: "index_featured_projects_on_law_project_id"
 
   create_table "galleries", force: :cascade do |t|
     t.string   "route"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "law_project_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
+
+  add_index "galleries", ["law_project_id"], name: "index_galleries_on_law_project_id"
 
   create_table "law_projects", force: :cascade do |t|
     t.string   "name"
@@ -42,9 +48,22 @@ ActiveRecord::Schema.define(version: 20180308202526) do
     t.date     "date"
     t.integer  "like"
     t.boolean  "pro"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "law_project_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
+
+  add_index "opinions", ["law_project_id"], name: "index_opinions_on_law_project_id"
+
+  create_table "project_tags", force: :cascade do |t|
+    t.integer  "tag_id"
+    t.integer  "law_project_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "project_tags", ["law_project_id"], name: "index_project_tags_on_law_project_id"
+  add_index "project_tags", ["tag_id"], name: "index_project_tags_on_tag_id"
 
   create_table "tags", force: :cascade do |t|
     t.string   "name"
