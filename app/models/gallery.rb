@@ -1,3 +1,5 @@
 class Gallery < ActiveRecord::Base
-    belongs_to :law_projects
+    belongs_to :law_project
+    
+    validates :route, :presence => true
 end
