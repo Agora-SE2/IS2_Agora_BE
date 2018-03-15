@@ -18,3 +18,27 @@ puts 'Llenando LawProjects'
 end
 
 puts 'Completado LawProject'
+
+puts 'Llenando FeaturedProject'
+
+100.times do |row|
+  FeaturedProject.create(year: 2017,
+  week: Faker::Number.number(2), 
+  day: Faker::Number.number(2),
+  law_project: Faker::LawProject.id
+  )
+  
+end
+
+puts 'Completado FeaturedProject'
+puts 'Llenando Gallery'
+
+100.times do |row|
+  Gallery.create(
+    route: Faker::File.file_name('upload/', Faker::Config.random.seed, 'jpg', '/'),
+  law_project: Faker::LawProject.id
+  )
+  
+end
+
+puts 'Completado Gallery'
