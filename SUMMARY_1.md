@@ -1,6 +1,14 @@
-#Summary 
+# Summary Revision 1
 
-##ImplementaciÛn de modelos: Alejandro SantamarÌa PÈrez y Kevin Andrey Herrera Silva
-##Asociaciones y Validaciones: Alejandro SantamarÌa PÈrez
-##Poblar base de datos: Kevin Andrey Herrera Silva y Alejandro SantamarÌa PÈrez
-##Backbone: Kevin Andrey Herrera Silva
+## Features Realizados
+
+- Implementaci√≥n de modelos: Alejandro Santamar√≠a P√©rez y Kevin Andrey Herrera Silva
+- Asociaciones y Validaciones: Alejandro Santamar√≠a P√©rez
+- Poblar base de datos: Kevin Andrey Herrera Silva y Alejandro Santamar√≠a P√©rez
+- Backbone: Kevin Andrey Herrera Silva
+
+## Posibles Features para el pr√≥ximo Sprint
+
+- Integraci√≥n con frontend
+- Simple token autentication
+- Cargar archivos con carrierwave
