@@ -1,8 +1,8 @@
 class LawProject < ActiveRecord::Base
-    has_many :project_tags
+    has_many :tags
     has_many :opinions
-    has_many :galleries
-    has_many :featured_projects
+    has_many :galleries 
+    belongs_to :featured_projects
     
     validates :name, :presence => true
     validates :description, :presence => true

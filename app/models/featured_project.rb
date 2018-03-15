@@ -1,5 +1,5 @@
 class FeaturedProject < ActiveRecord::Base
-    belongs_to :law_project
+    has_many :law_project
     
     validates :year, :presence => true
     validates :week, :presence => true
