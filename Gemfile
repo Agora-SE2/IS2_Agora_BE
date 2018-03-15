@@ -25,7 +25,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 #Start Custom Gems
 gem 'devise'
-
+gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
 
 
 # Use ActiveModel has_secure_password
