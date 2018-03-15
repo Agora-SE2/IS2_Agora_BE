@@ -22,16 +22,12 @@ ActiveRecord::Schema.define(version: 20180310042947) do
     t.datetime "updated_at",     null: false
   end
 
-  add_index "featured_projects", ["law_project_id"], name: "index_featured_projects_on_law_project_id"
-
   create_table "galleries", force: :cascade do |t|
     t.string   "route"
     t.integer  "law_project_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
   end
-
-  add_index "galleries", ["law_project_id"], name: "index_galleries_on_law_project_id"
 
   create_table "law_projects", force: :cascade do |t|
     t.string   "name"
@@ -53,8 +49,6 @@ ActiveRecord::Schema.define(version: 20180310042947) do
     t.datetime "updated_at",     null: false
   end
 
-  add_index "opinions", ["law_project_id"], name: "index_opinions_on_law_project_id"
-
   create_table "project_tags", force: :cascade do |t|
     t.integer  "tag_id"
     t.integer  "law_project_id"
@@ -68,8 +62,9 @@ ActiveRecord::Schema.define(version: 20180310042947) do
   create_table "tags", force: :cascade do |t|
     t.string   "name"
     t.string   "icon_route"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "law_project_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
   create_table "users", force: :cascade do |t|

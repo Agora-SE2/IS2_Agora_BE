@@ -9,67 +9,57 @@
 require 'faker'
 puts 'Llenando LawProjects'
 
+
+
 100.times do |row|
-  LawProject.create(name: Faker::Name.first_name,
+  
+  law=LawProject.create(name: Faker::Name.first_name,
   description: Faker::Lorem.paragraph, 
-  publication_date: Faker::Date.backward(days = 1),
+  publication_date: Faker::Date.backward(1),
   yes_votes: Faker::Number.number(3), 
   not_votes: Faker::Number.number(3))
+  
+  rand(1..10).times do
+      law.galleries.create(
+      route: Faker::File.file_name('uploads', Faker::Config.random.seed, 'jpg', '/'))
+    end
+  rand(1..10).times do
+      law.opinions.create(
+      content: Faker::ChuckNorris.fact,
+      date: Faker::Date.backward(1),
+      like: Faker::Number.number(2),
+      pro: Faker::Boolean.boolean
+      )
+    end
+  rand(1..10).times do
+      law.tags.create(
+      name: Faker::Lorem.word,
+      icon_route: Faker::Date.backward(1)
+      )
+    end
+   
 end
+
 
 puts 'Completado LawProject'
-puts 'Llenando Gallery'
-
+puts 'Inicio FeaturedProject'
 100.times do |row|
-  LawProject.create(name: Faker::Name.first_name,
-  description: Faker::Lorem.paragraph, 
-  publication_date: Faker::Date.backward(days = 1),
-  yes_votes: Faker::Number.number(3), 
-  not_votes: Faker::Number.number(3))
+  
+  FeaturedProject.create(year: "2018", week: Faker::Number.number(1), day: Faker::Number.number(1)
+  
+  )
+  
+   
 end
-
-puts 'Completado Gallery'
-puts 'Llenando Opinions'
-
-100.times do |row|
-  LawProject.create(name: Faker::Name.first_name,
-  description: Faker::Lorem.paragraph, 
-  publication_date: Faker::Date.backward(days = 1),
-  yes_votes: Faker::Number.number(3), 
-  not_votes: Faker::Number.number(3))
-end
-
-puts 'Completado Opinions'
-puts 'Llenando FeaturedProjects'
-
-100.times do |row|
-  LawProject.create(name: Faker::Name.first_name,
-  description: Faker::Lorem.paragraph, 
-  publication_date: Faker::Date.backward(days = 1),
-  yes_votes: Faker::Number.number(3), 
-  not_votes: Faker::Number.number(3))
-end
-
-puts 'Completado FeaturedProjects'
-puts 'Llenando Tags'
-
-100.times do |row|
-  LawProject.create(name: Faker::Name.first_name,
-  description: Faker::Lorem.paragraph, 
-  publication_date: Faker::Date.backward(days = 1),
-  yes_votes: Faker::Number.number(3), 
-  not_votes: Faker::Number.number(3))
-end
-
-puts 'Completado Tags'
+puts 'Fin Featured Project'
 puts 'Llenando Users'
 
 100.times do |row|
-  LawProject.create(name: Faker::Name.first_name,
-  description: Faker::Lorem.paragraph, 
-  publication_date: Faker::Date.backward(days = 1),
-  yes_votes: Faker::Number.number(3), 
-  not_votes: Faker::Number.number(3))
+  User.create(email: Faker::Internet.email,
+  encrypted_password: Faker::Lorem.word,
+  sign_in_count: Faker::Number.number(2))
+  
 end
+puts 'Listo Users'
 
-puts 'Completado Users'
+puts 'Tarea Completada'

@@ -4,7 +4,7 @@ class CreateFeaturedProjects < ActiveRecord::Migration
       t.integer :year
       t.integer :week
       t.integer :day
-      t.references :law_project, index: true, foreign_key: true
+      t.integer :law_project_id
 
       t.timestamps null: false
     end
