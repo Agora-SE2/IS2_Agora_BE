@@ -1,4 +1,5 @@
 class OpinionsController < ApplicationController
+  skip_before_action :verify_authenticity_token
   before_action :set_opinion, only: [:show, :edit, :update, :destroy]
 
   # GET /opinions
