@@ -20,23 +20,23 @@ puts 'Llenando LawProjects'
   not_votes: Faker::Number.number(3))
   
   rand(1..10).times do
-      law.galleries.create(
-      route: Faker::File.file_name('uploads', Faker::Config.random.seed, 'jpg', '/'))
-    end
+    law.galleries.create(
+    route: Faker::File.file_name('uploads', Faker::Config.random.seed, 'jpg', '/'))
+  end
   rand(1..10).times do
-      law.opinions.create(
-      content: Faker::ChuckNorris.fact,
-      date: Faker::Date.backward(1),
-      like: Faker::Number.number(2),
-      pro: Faker::Boolean.boolean
-      )
-    end
+    law.opinions.create(
+    content: Faker::ChuckNorris.fact,
+    date: Faker::Date.backward(1),
+    like: Faker::Number.number(2),
+    pro: Faker::Boolean.boolean
+    )
+  end
   rand(1..10).times do
-      law.tags.create(
-      name: Faker::Lorem.word,
-      icon_route: Faker::Date.backward(1)
-      )
-    end
+    law.tags.create(
+    name: Faker::Lorem.word,
+    icon_route: Faker::Date.backward(1)
+    )
+  end
    
 end
 

@@ -1,4 +1,5 @@
 class LawProjectsController < ApplicationController
+  skip_before_action :verify_authenticity_token
   before_action :set_law_project, only: [:show, :edit, :update, :destroy]
 
   # GET /law_projects
