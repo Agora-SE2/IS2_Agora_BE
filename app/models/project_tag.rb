@@ -1,4 +1,6 @@
-class ProjectTag < ActiveRecord::Base
-  belongs_to :tag
-  belongs_to :law_project
+class ProjectTag < ApplicationRecord
+    
+  belongs_to :tags
+  belongs_to :law_projects
+    
 end

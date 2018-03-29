@@ -1,5 +1,4 @@
 class ProjectTagsController < ApplicationController
-  skip_before_action :verify_authenticity_token
   before_action :set_project_tag, only: [:show, :edit, :update, :destroy]
 
   # GET /project_tags
@@ -70,6 +69,6 @@ class ProjectTagsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def project_tag_params
-      params.require(:project_tag).permit(:tag_id, :law_project_id)
+      params.fetch(:project_tag, {})
     end
 end
