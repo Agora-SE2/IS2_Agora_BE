@@ -17,14 +17,16 @@ ActiveRecord::Schema.define(version: 20180310042947) do
     t.integer  "year"
     t.integer  "week"
     t.integer  "day"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "law_project_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
   create_table "galleries", force: :cascade do |t|
     t.string   "route"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "law_project_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
   create_table "law_projects", force: :cascade do |t|
@@ -42,8 +44,9 @@ ActiveRecord::Schema.define(version: 20180310042947) do
     t.date     "date"
     t.integer  "like"
     t.boolean  "pro"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "law_project_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
   create_table "project_tags", force: :cascade do |t|
