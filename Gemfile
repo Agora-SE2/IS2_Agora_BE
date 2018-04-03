@@ -26,7 +26,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 #Start Custom Gems
 gem 'devise'
 gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
-
+gem 'annotate'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

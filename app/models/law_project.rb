@@ -1,3 +1,17 @@
+# == Schema Information
+#
+# Table name: law_projects
+#
+#  id               :integer          not null, primary key
+#  name             :string
+#  description      :string
+#  publication_date :date
+#  yes_votes        :integer
+#  not_votes        :integer
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
+#
+
 class LawProject < ActiveRecord::Base
     has_many :tags
     has_many :opinions
