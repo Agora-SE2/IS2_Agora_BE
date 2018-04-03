@@ -1,4 +1,5 @@
 class GalleriesController < ApplicationController
+  skip_before_action :verify_authenticity_token
   before_action :set_gallery, only: [:show, :edit, :update, :destroy]
 
   # GET /galleries

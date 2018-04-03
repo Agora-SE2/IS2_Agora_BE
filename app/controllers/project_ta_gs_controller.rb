@@ -1,4 +1,5 @@
 class ProjectTaGsController < ApplicationController
+  skip_before_action :verify_authenticity_token
   before_action :set_project_tag, only: [:show, :edit, :update, :destroy]
 
   # GET /project_tags

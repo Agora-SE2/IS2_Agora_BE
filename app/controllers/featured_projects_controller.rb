@@ -1,4 +1,5 @@
 class FeaturedProjectsController < ApplicationController
+  skip_before_action :verify_authenticity_token
   before_action :set_featured_project, only: [:show, :edit, :update, :destroy]
 
   # GET /featured_projects
