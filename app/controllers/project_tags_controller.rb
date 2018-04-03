@@ -4,7 +4,8 @@ class ProjectTagsController < ApplicationController
   # GET /project_tags
   # GET /project_tags.json
   def index
-    @project_tags = ProjectTag.all
+    #@project_tags = ProjectTag.all
+    @project_tags = ProjectTag.paginate(:page => params[:page], :per_page => 10)
   end
 
   # GET /project_tags/1

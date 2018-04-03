@@ -5,6 +5,7 @@ class LawProjectsController < ApplicationController
   # GET /law_projects.json
   def index
     @law_projects = LawProject.all
+    @law_projects = LawProject.paginate(:page => params[:page], :per_page => 10)
   end
 
   # GET /law_projects/1

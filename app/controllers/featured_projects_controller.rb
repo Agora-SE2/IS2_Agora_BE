@@ -4,7 +4,7 @@ class FeaturedProjectsController < ApplicationController
   # GET /featured_projects
   # GET /featured_projects.json
   def index
-    @featured_projects = FeaturedProject.all
+    @featured_projects = FeaturedProject.paginate(:page => params[:page], :per_page => 10)
   end
 
   # GET /featured_projects/1
