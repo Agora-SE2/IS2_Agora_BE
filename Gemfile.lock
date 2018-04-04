@@ -1,3 +1,4 @@
+
 GIT
   remote: https://github.com/stympy/faker.git
   revision: 679fd508c9f41f41b6df62024d67bc2281953395
@@ -46,14 +47,10 @@ GEM
       i18n (~> 0.7)
       minitest (~> 5.1)
       tzinfo (~> 1.1)
-<<<<<<< HEAD
     annotate (2.7.2)
       activerecord (>= 3.2, < 6.0)
       rake (>= 10.4, < 13.0)
     arel (6.0.4)
-=======
-    arel (7.1.4)
->>>>>>> 3b7e01ea5cd73b074e8259fa6de9eb425a445789
     bcrypt (3.1.11)
     binding_of_caller (0.8.0)
       debug_inspector (>= 0.0.1)
@@ -185,13 +182,7 @@ GEM
       binding_of_caller (>= 0.7.2)
       railties (>= 4.0)
       sprockets-rails (>= 2.0, < 4.0)
-<<<<<<< HEAD
-    websocket-driver (0.6.5)
-      websocket-extensions (>= 0.1.0)
-    websocket-extensions (0.1.3)
-=======
     will_paginate (3.1.6)
->>>>>>> KevinAndrey
 
 PLATFORMS
   ruby
@@ -214,7 +205,7 @@ DEPENDENCIES
   turbolinks
   uglifier (>= 1.3.0)
   web-console (~> 2.0)
-  will_paginate (~> 3.1.0)
+will_paginate (~> 3.1.0)
 
 BUNDLED WITH
    1.16.1
