@@ -5,7 +5,8 @@ class GalleriesController < ApplicationController
   # GET /galleries
   # GET /galleries.json
   def index
-    @galleries = Gallery.all
+    #@galleries = Gallery.all
+    @galleries = Gallery.paginate(:page => params[:page], :per_page => 10)
   end
 
   # GET /galleries/1
