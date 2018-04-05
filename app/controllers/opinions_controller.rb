@@ -3,11 +3,21 @@ class OpinionsController < ApplicationController
   #skip_before_action :verify_authenticity_token
   before_action :set_opinion, only: [:show, :edit, :update, :destroy]
 
+  require 'net/http'
+  
+  url = URI.parse('http://www.example.com/index.html')
+  req = Net::HTTP::Get.new(url.to_s)
+  res = Net::HTTP.start(url.host, url.port) {|http|
+    http.request(req)
+  }
+  puts res.body
+
   # GET /opinions
   # GET /opinions.json
   def index
     #@opinions = Opinion.all
-    @opinions = Opinion.paginate(:page => params[:page], :per_page => 10)
+    @Pro = 1
+    @opinions = Opinion.paginate(:page => params[:page], :per_page => 10,)
   end
 
   # GET /opinions/1

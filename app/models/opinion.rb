@@ -18,7 +18,6 @@ class Opinion < ActiveRecord::Base
     validates :content, :presence => true
     validates :date, :presence => true
     validates :like, :presence => true
-    validates :pro, :presence => true
     
     scope :pro_opinions, -> { where(pro: true) }
     scope :against_opinions, -> { where(pro: false) }
