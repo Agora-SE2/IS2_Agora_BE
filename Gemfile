@@ -29,6 +29,7 @@ gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
 gem 'annotate'
 gem 'will_paginate', '~> 3.1.0'
 gem 'rack-cors', :require => 'rack/cors'
+gem 'simple_token_authentication', '~> 1.0'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
