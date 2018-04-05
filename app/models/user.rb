@@ -18,8 +18,13 @@
 #
 
 class User < ActiveRecord::Base
+  acts_as_token_authenticatable
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+         
+  scope :recents, -> { where(created_at: (Time.now.midnight - 1.day)..Time.now.midnight) }
+  scope :sign_in_recents, -> { where(last_sign_in_at: (Time.now.midnight - 1.day)..Time.now.midnight) }
+  scope :only_emails, -> { select("email") }
 end

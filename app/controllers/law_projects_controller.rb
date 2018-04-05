@@ -1,11 +1,12 @@
 class LawProjectsController < ApplicationController
-  skip_before_action :verify_authenticity_token
+  #acts_as_token_authentication_handler_for User
+  #skip_before_action :verify_authenticity_token
   before_action :set_law_project, only: [:show, :edit, :update, :destroy]
 
   # GET /law_projects
   # GET /law_projects.json
   def index
-    @law_projects = LawProject.all
+    #@law_projects = LawProject.all
     @law_projects = LawProject.paginate(:page => params[:page], :per_page => 10)
   end
 
@@ -30,6 +31,7 @@ class LawProjectsController < ApplicationController
 
     respond_to do |format|
       if @law_project.save
+        NotificationMailer.notification_email(@law_project).deliver_later
         format.html { redirect_to @law_project, notice: 'Law project was successfully created.' }
         format.json { render :show, status: :created, location: @law_project }
       else

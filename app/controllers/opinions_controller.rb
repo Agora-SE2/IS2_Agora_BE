@@ -1,5 +1,6 @@
 class OpinionsController < ApplicationController
-  skip_before_action :verify_authenticity_token
+  #acts_as_token_authentication_handler_for User
+  #skip_before_action :verify_authenticity_token
   before_action :set_opinion, only: [:show, :edit, :update, :destroy]
 
   # GET /opinions
@@ -30,6 +31,7 @@ class OpinionsController < ApplicationController
 
     respond_to do |format|
       if @opinion.save
+        OpinionMailer.opinion_email(@opinion).deliver_later
         format.html { redirect_to @opinion, notice: 'Opinion was successfully created.' }
         format.json { render :show, status: :created, location: @opinion }
       else

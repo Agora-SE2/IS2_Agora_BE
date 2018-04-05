@@ -23,4 +23,9 @@ class LawProject < ActiveRecord::Base
     validates :publication_date, :presence => true
     validates :yes_votes, :presence => true
     validates :not_votes, :presence => true
+    
+    scope :recents, -> { where(created_at: (Time.now.midnight - 1.day)..Time.now.midnight) }
+    scope :name_recents, -> { where(created_at: (Time.now.midnight - 1.day)..Time.now.midnight).pluck(:name) }
+    scope :name_and_votes, -> { select("content","yes_votes","not_votes") }
+    
 end

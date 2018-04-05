@@ -17,4 +17,7 @@ class FeaturedProject < ActiveRecord::Base
     validates :year, :presence => true
     validates :week, :presence => true
     validates :day, :presence => true
+    
+    scope :recents, -> { where(created_at: (Time.now.midnight - 1.day)..Time.now.midnight) }
+    
 end
