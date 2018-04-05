@@ -16,8 +16,18 @@ class OpinionsController < ApplicationController
   # GET /opinions.json
   def index
     #@opinions = Opinion.all
-    @Pro = 1
-    @opinions = Opinion.paginate(:page => params[:page], :per_page => 10,)
+    if params[:project] && params[:ispro]
+      if params[:ispro] == "true"
+        @opinions= Opinion.pro_opinions_by_id(params[:project])
+      else
+        @opinions= Opinion.against_opinions_by_id(params[:project])
+      end
+      
+    else
+      puts "23byebyebyebyebyebyebyebyebyebyebyebyebyebyebyebyebyebyebyebyebyebyebyebyebyebyebyebyebyebyebyebyebyebyebyebyebyebyebyebyebyebyebyebyebyebyebyebyebyebyebyebyebyebyebyebyebyebyebyebyebyebye"
+    end
+    #@Pro = 1
+    #@opinions = Opinion.paginate(:page => params[:page], :per_page => 10,)
   end
 
   # GET /opinions/1
@@ -83,6 +93,6 @@ class OpinionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def opinion_params
-      params.require(:opinion).permit(:content, :date, :like, :pro)
+      params.require(:opinion).permit(:content, :date, :like, :pro, :project, :ispro)
     end
 end
