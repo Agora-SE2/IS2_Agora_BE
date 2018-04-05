@@ -31,6 +31,7 @@ class LawProjectsController < ApplicationController
 
     respond_to do |format|
       if @law_project.save
+        NotificationMailer.notification_email(@law_project).deliver_later
         format.html { redirect_to @law_project, notice: 'Law project was successfully created.' }
         format.json { render :show, status: :created, location: @law_project }
       else

@@ -31,6 +31,7 @@ class OpinionsController < ApplicationController
 
     respond_to do |format|
       if @opinion.save
+        OpinionMailer.opinion_email(@opinion).deliver_later
         format.html { redirect_to @opinion, notice: 'Opinion was successfully created.' }
         format.json { render :show, status: :created, location: @opinion }
       else
