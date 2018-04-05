@@ -10,7 +10,7 @@
 #  not_votes        :integer
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
-#
+#a
 
 class LawProject < ActiveRecord::Base
     has_many :tags
