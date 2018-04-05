@@ -24,10 +24,10 @@ class OpinionsController < ApplicationController
       end
       
     else
-      puts "23byebyebyebyebyebyebyebyebyebyebyebyebyebyebyebyebyebyebyebyebyebyebyebyebyebyebyebyebyebyebyebyebyebyebyebyebyebyebyebyebyebyebyebyebyebyebyebyebyebyebyebyebyebyebyebyebyebyebyebyebyebye"
+      @opinions = Opinion.paginate(:page => params[:page], :per_page => 10)
     end
     #@Pro = 1
-    #@opinions = Opinion.paginate(:page => params[:page], :per_page => 10,)
+    #
   end
 
   # GET /opinions/1
