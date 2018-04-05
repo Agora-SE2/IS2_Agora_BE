@@ -14,4 +14,6 @@ class Tag < ActiveRecord::Base
     has_many :project_tags
     
     validates :name, :presence => true
+    
+    scope :recents, -> { where(created_at: (Time.now.midnight - 1.day)..Time.now.midnight) }
 end
