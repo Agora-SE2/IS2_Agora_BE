@@ -17,6 +17,6 @@ class Opinion < ActiveRecord::Base
     
     validates :content, :presence => true
     validates :date, :presence => true
-    validates :like, :presence => true
+    validates :like, :presence => true#, :format => {:with => /\A\d+\z/, :message => "el campo \"likes\" no tiene el formato correcto, inténtelo de nuevo."}
     validates :pro, :presence => true
 end

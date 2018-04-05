@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :models
   resources :project_tags
   resources :project_tags
   devise_for :users
@@ -8,5 +9,5 @@ Rails.application.routes.draw do
   resources :galleries
   resources :law_projects
   get 'home/index'
-    root 'home#index'
+  root 'home#index'
 end
