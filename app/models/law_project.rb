@@ -21,8 +21,9 @@ class LawProject < ActiveRecord::Base
     validates :name, :presence => true
     validates :description, :presence => true
     validates :publication_date, :presence => true
-    validates :yes_votes, :presence => true
-    validates :not_votes, :presence => true
+    validates :yes_votes, :presence => true, :format => {:with => /\A\d+\z/, :message => "el campo \"likes\" no tiene el formato correcto, inténtelo de nuevo."}
+    validates :not_votes, :presence => true, :format => {:with => /\A\d+\z/, :message => "el campo \"likes\" no tiene el formato correcto, inténtelo de nuevo."}
+    
     
     scope :recents, -> { where(created_at: (Time.now.midnight - 1.day)..Time.now.midnight) }
     scope :name_recents, -> { where(created_at: (Time.now.midnight - 1.day)..Time.now.midnight).pluck(:name) }
