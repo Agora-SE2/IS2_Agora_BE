@@ -13,7 +13,8 @@
 #a
 
 class LawProject < ActiveRecord::Base
-    has_many :tags
+    has_many :project_tags
+    has_many :tags, :through => :project_tags
     has_many :opinions
     has_many :galleries 
     belongs_to :featured_projects
