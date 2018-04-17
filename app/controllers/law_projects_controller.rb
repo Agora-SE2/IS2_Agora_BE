@@ -12,13 +12,12 @@ class LawProjectsController < ApplicationController
 
   # GET /law_projects/1
   # GET /law_projects/1.json
-  def show
+def show
     respond_to do |format|
       format.html
-      format.json
       format.pdf do
-        render pdf: "file"   # Excluding ".pdf" extension.
-      end
+    render  :pdf => "file.pdf", :template => 'report/index.html.erb'
+end
     end
   end
 
