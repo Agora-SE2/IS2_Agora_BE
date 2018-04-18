@@ -23,14 +23,25 @@ puts 'Llenando LawProjects'
     law.galleries.create(
     route: Faker::File.file_name('uploads', Faker::Config.random.seed, 'jpg', '/'))
   end
-  rand(1..10).times do
-    law.opinions.create(
-    content: Faker::ChuckNorris.fact,
-    date: Faker::Date.backward(1),
-    like: Faker::Number.number(2),
-    pro: Faker::Boolean.boolean
-    )
+  
+    
+  1.times do |row|
+    User.create(email: Faker::Internet.email,
+    encrypted_password: Faker::Lorem.word,
+    sign_in_count: Faker::Number.number(2))
+    
+    rand(1..10).times do
+      law.opinions.create(
+      content: Faker::ChuckNorris.fact,
+      date: Faker::Date.backward(1),
+      like: Faker::Number.number(2),
+      pro: Faker::Boolean.boolean
+      )
+    end
+    
   end
+  puts 'Listo Users'
+
   rand(1..10).times do
     law.tags.create(
     name: Faker::Lorem.word,
@@ -54,10 +65,3 @@ end
 puts 'Fin Featured Project'
 puts 'Llenando Users'
 
-100.times do |row|
-  User.create(email: Faker::Internet.email,
-  encrypted_password: Faker::Lorem.word,
-  sign_in_count: Faker::Number.number(2))
-  
-end
-puts 'Listo Users'
