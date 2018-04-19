@@ -46,7 +46,7 @@ end
 
   def ensure_params_exist
       return unless params[:email].blank? or params[:password].blank?
-    render :json=>{:success=>false, :message=>"missing  parameter"}, :status=>422
+    render :json=>{:success=>false, :message=>"Existent email"}
   end
 
   # If you have extra params to permit, append them to the sanitizer.
