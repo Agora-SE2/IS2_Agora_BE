@@ -23,6 +23,8 @@ class OpinionsController < ApplicationController
         @opinions= Opinion.against_opinions_by_id(params[:project])
       end
       
+    elsif params[:law_project]
+      @opinions = Opinion.opinions_of_this_lp(params[:law_project])
     else
       @opinions = Opinion.paginate(:page => params[:page], :per_page => 10)
     end
@@ -93,6 +95,6 @@ class OpinionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def opinion_params
-      params.require(:opinion).permit(:content, :date, :like, :pro, :project, :ispro)
+      params.require(:opinion).permit(:content, :date, :like, :pro, :project, :ispro, :law_project)
     end
 end

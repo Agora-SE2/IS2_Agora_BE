@@ -23,6 +23,7 @@ class Opinion < ActiveRecord::Base
     scope :pro_opinions_by_id, -> (project){ where(pro: true, law_project_id: project) }
     scope :against_opinions_by_id, -> (project){ where(pro: false, law_project_id: project) }
     scope :against_opinions, -> { where(pro: false) }
+    scope :opinions_of_this_lp, -> (law_project){ where(law_project_id: law_project) }
     scope :only_content, -> { select("content") }
     scope :content_pro, -> { where(pro: true).pluck(:content) }
     scope :content_against, -> { where(pro: false).pluck(:content) }
