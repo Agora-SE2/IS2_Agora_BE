@@ -25,16 +25,6 @@ Rails.application.configure do
   # Do not fallback to assets pipeline if a precompiled asset is missed.
   config.assets.compile = false
   config.action_mailer.default_url_options = { host: 'https://agora-se.herokuapp.com/' }
-  ActionMailer::Base.delivery_method = :smtp
-ActionMailer::Base.smtp_settings = {
-  address:              'smtp.gmail.com',
-  port:                 587,
-  domain:               'agora-se.herokuapp.com/',
-  user_name:            ENV["asantamariap14@gmail.com"],
-  password:             ENV["As98041465123"],
-  authentication:       'plain',
-  enable_starttls_auto: true 
-}
   # `config.assets.precompile` and `config.assets.version` have moved to config/initializers/assets.rb
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
