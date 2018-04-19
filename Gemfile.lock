@@ -244,6 +244,7 @@ DEPENDENCIES
   faker!
   jbuilder (~> 2.0)
   jquery-rails
+  oauth2
   omniauth-facebook
   paperclip (~> 4.1)
   pg (~> 0.20)
