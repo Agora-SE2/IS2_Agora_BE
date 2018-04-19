@@ -54,6 +54,7 @@ class OpinionsController < ApplicationController
     respond_to do |format|
       if @opinion.save
         OpinionMailer.opinion_email(@opinion).deliver_later
+        SaveOpinionMailer.save_opinion_email(current_user.email).deliver_later
         format.json { render :show, status: :created, location: @opinion }
       else
         format.json { render json: @opinion.errors, status: :unprocessable_entity }
