@@ -38,10 +38,8 @@ class LawProjectsController < ApplicationController
     respond_to do |format|
       if @law_project.save
         NotificationMailer.notification_email(@law_project).deliver_later
-        format.html { redirect_to @law_project, notice: 'Law project was successfully created.' }
         format.json { render :show, status: :created, location: @law_project }
       else
-        format.html { render :new }
         format.json { render json: @law_project.errors, status: :unprocessable_entity }
       end
     end
@@ -52,10 +50,8 @@ class LawProjectsController < ApplicationController
   def update
     respond_to do |format|
       if @law_project.update(law_project_params)
-        format.html { redirect_to @law_project, notice: 'Law project was successfully updated.' }
         format.json { render :show, status: :ok, location: @law_project }
       else
-        format.html { render :edit }
         format.json { render json: @law_project.errors, status: :unprocessable_entity }
       end
     end
@@ -66,7 +62,6 @@ class LawProjectsController < ApplicationController
   def destroy
     @law_project.destroy
     respond_to do |format|
-      format.html { redirect_to law_projects_url, notice: 'Law project was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

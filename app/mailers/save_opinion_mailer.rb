@@ -1,0 +1,2 @@
+class SaveOpinionMailer < ApplicationMailer
+end
