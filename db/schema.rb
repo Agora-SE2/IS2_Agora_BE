@@ -10,11 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 20180417203510) do
-=======
 ActiveRecord::Schema.define(version: 20180417204322) do
->>>>>>> 0707963d0f5afb2f9d8cf9887061bd9758221e90
 
   create_table "featured_projects", force: :cascade do |t|
     t.integer  "year"
@@ -107,17 +103,14 @@ ActiveRecord::Schema.define(version: 20180417204322) do
     t.datetime "confirmation_sent_at"
     t.string   "provider"
     t.string   "uid"
-<<<<<<< HEAD
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
-=======
     t.string   "birth_name"
     t.string   "user_name"
     t.string   "description"
     t.boolean  "is_admin",                          default: false
->>>>>>> 0707963d0f5afb2f9d8cf9887061bd9758221e90
     t.index ["authentication_token"], name: "index_users_on_authentication_token", unique: true
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
