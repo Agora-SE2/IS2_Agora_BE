@@ -23,6 +23,8 @@ class OpinionsController < ApplicationController
         @opinions= Opinion.against_opinions_by_id(params[:project])
       end
       
+    elsif params[:law_project]
+      @opinions = Opinion.opinions_of_this_lp(params[:law_project])
     else
       @opinions = Opinion.paginate(:page => params[:page], :per_page => 10)
     end
@@ -52,10 +54,8 @@ class OpinionsController < ApplicationController
     respond_to do |format|
       if @opinion.save
         OpinionMailer.opinion_email(@opinion).deliver_later
-        format.html { redirect_to @opinion, notice: 'Opinion was successfully created.' }
         format.json { render :show, status: :created, location: @opinion }
       else
-        format.html { render :new }
         format.json { render json: @opinion.errors, status: :unprocessable_entity }
       end
     end
@@ -66,10 +66,8 @@ class OpinionsController < ApplicationController
   def update
     respond_to do |format|
       if @opinion.update(opinion_params)
-        format.html { redirect_to @opinion, notice: 'Opinion was successfully updated.' }
         format.json { render :show, status: :ok, location: @opinion }
       else
-        format.html { render :edit }
         format.json { render json: @opinion.errors, status: :unprocessable_entity }
       end
     end
@@ -80,7 +78,6 @@ class OpinionsController < ApplicationController
   def destroy
     @opinion.destroy
     respond_to do |format|
-      format.html { redirect_to opinions_url, notice: 'Opinion was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -93,6 +90,6 @@ class OpinionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def opinion_params
-      params.require(:opinion).permit(:content, :date, :like, :pro, :project, :ispro)
+      params.require(:opinion).permit(:content, :date, :like, :pro, :project, :ispro, :law_project)
     end
 end

@@ -1,30 +1,24 @@
 # frozen_string_literal: true
 
-class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
-  # You should configure your model like this:
-  # devise :omniauthable, omniauth_providers: [:twitter]
+class User::OmniauthCallbacksController < Devise::OmniauthCallbacksController
+  def facebook
+    if request.env["omniauth.auth"].info.email.blank?
+      redirect_to "/user/auth/facebook?auth_type=rerequest&scope=email"
+    else
+      @user = User.find_for_facebook_oauth(request.env["omniauth.auth"])
 
-  # You should also create an action method in this controller like this:
-  # def twitter
-  # end
+      if @user.persisted?
+        sign_in_and_redirect @user, :event => :authentication #this will throw if @user is not activated
+        set_flash_message(:notice, :success, :kind => "Facebook") if is_navigational_format?
+      end
+    end
+  end
 
-  # More info at:
-  # https://github.com/plataformatec/devise#omniauth
+  def facebook_access_token
+  end
 
-  # GET|POST /resource/auth/twitter
-  # def passthru
-  #   super
-  # end
-
-  # GET|POST /users/auth/twitter/callback
-  # def failure
-  #   super
-  # end
-
-  # protected
-
-  # The path used when OmniAuth fails
-  # def after_omniauth_failure_path_for(scope)
-  #   super(scope)
-  # end
+  def failure
+    redirect_to root_path
+  end
+  
 end
