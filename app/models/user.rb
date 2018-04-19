@@ -18,7 +18,13 @@
 #
 
 class User < ActiveRecord::Base
+<<<<<<< HEAD
   #mount_uploader :avatar, AvatarUploader
+=======
+  
+  has_many :opinions
+  
+>>>>>>> Alejandro
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,

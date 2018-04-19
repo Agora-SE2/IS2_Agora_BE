@@ -14,6 +14,7 @@
 
 class Opinion < ActiveRecord::Base
     belongs_to :law_project
+    belongs_to :user
     
     validates :content, :presence => true
     validates :date, :presence => true

@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
  resources :project_tags
   resources :project_tags
-  devise_for :users, controllers: { confirmations: 'confirmations', omniauth_callbacks: 'users/omniauth_callbacks' }
+  devise_for :users, controllers: {sessions: 'users/sessions'}
   resources :tags
   resources :featured_projects
   resources :opinions
