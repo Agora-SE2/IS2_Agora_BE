@@ -16,7 +16,7 @@ def create
 
     if resource.valid_password?(params[:password])
       sign_in("user", resource)
-      render :json=> {:id=>resource.id, :success=>true, :auth_token=>resource.authentication_token,  :email=>resource.email, :isAdmin=>resource.is_admin}
+      render :json=> {:id=>resource.id, :success=>true, :auth_token=>resource.authentication_token,  :email=>resource.email, :isAdmin=>user.is_admin, :birthName=>user.birth_name, :userName=>user.user_name}
       return
     end
     invalid_login_attempt
@@ -41,7 +41,7 @@ end
 
   def invalid_login_attempt
     set_flash_message(:alert, :invalid)
-    render :json=> {:success=>false, :message=>"wrong email or pass"}, status: 401
+    render :json=> {:success=>false, :message=>"wrong email or pass"}
   end
 
   def ensure_params_exist

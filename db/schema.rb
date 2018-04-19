@@ -62,7 +62,7 @@ ActiveRecord::Schema.define(version: 20180417204322) do
     t.integer  "like"
     t.boolean  "pro"
     t.integer  "law_project_id"
-    t.integer  "user_email"
+    t.integer  "user_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
   end

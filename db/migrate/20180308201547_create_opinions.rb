@@ -6,7 +6,7 @@ class CreateOpinions < ActiveRecord::Migration
       t.integer :like
       t.boolean :pro
       t.integer :law_project_id
-      t.integer :user_email
+      t.integer :user_id
 
       t.timestamps null: false
     end

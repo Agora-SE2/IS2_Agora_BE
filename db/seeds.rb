@@ -13,29 +13,36 @@ puts 'Llenando LawProjects'
 
 100.times do |row|
   
-  law=LawProject.create(name: Faker::Name.first_name,
+  law=LawProject.create!(name: Faker::Name.first_name,
   description: Faker::Lorem.paragraph, 
   publication_date: Faker::Date.backward(1),
   yes_votes: Faker::Number.number(3), 
   not_votes: Faker::Number.number(3))
   
   rand(1..10).times do
-    law.galleries.create(
+    law.galleries.create!(
     route: Faker::File.file_name('uploads', Faker::Config.random.seed, 'jpg', '/'))
   end
   
     
   1.times do |row|
-    User.create(email: Faker::Internet.email,
-    encrypted_password: Faker::Lorem.word,
+    
+    user=User.create(email: Faker::Internet.email,
+    password: 'topsecret', 
+    password_confirmation: 'topsecret',
+    is_admin: Faker::Boolean,
     sign_in_count: Faker::Number.number(2))
     
+    user.save!
+    
     rand(1..10).times do
-      law.opinions.create(
+      law.opinions.create!(
       content: Faker::ChuckNorris.fact,
       date: Faker::Date.backward(1),
       like: Faker::Number.number(2),
-      pro: Faker::Boolean.boolean
+      pro: Faker::Boolean.boolean,
+      user_id: rand(1..user.id),
+      law_project_id: law.id
       )
     end
     
