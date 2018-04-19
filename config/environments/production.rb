@@ -29,7 +29,7 @@ Rails.application.configure do
 ActionMailer::Base.smtp_settings = {
   address:              'smtp.gmail.com',
   port:                 587,
-  domain:               'herokuapp.com/',
+  domain:               'agora-se.herokuapp.com/',
   user_name:            "se2agora@gmail.com",
   password:             "Ingenieria",
   authentication:       'plain',
