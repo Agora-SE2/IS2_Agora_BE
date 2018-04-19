@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180419051603) do
+ActiveRecord::Schema.define(version: 20180419064427) do
 
   create_table "featured_projects", force: :cascade do |t|
     t.integer  "year"
@@ -112,6 +112,7 @@ ActiveRecord::Schema.define(version: 20180419051603) do
     t.string   "uid"
     t.string   "name"
     t.text     "image"
+    t.string   "token"
     t.index ["authentication_token"], name: "index_users_on_authentication_token", unique: true
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
