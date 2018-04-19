@@ -1,4 +1,6 @@
-class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
+# frozen_string_literal: true
+
+class User::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def facebook
     @user = User.from_omniauth(request.env["omniauth.auth"])
 
