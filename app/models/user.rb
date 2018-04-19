@@ -19,9 +19,13 @@
 
 class User < ActiveRecord::Base
   #mount_uploader :avatar, AvatarUploader
+  
+  has_many :opinions
+  
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
+<<<<<<< HEAD
          :recoverable, :rememberable, :trackable, :validatable, :confirmable, :omniauthable, :omniauth_providers => [:facebook]
          
          def self.new_with_session(params, session)
@@ -33,6 +37,13 @@ class User < ActiveRecord::Base
 end
 
 def self.from_omniauth(auth)
+=======
+         :recoverable, :rememberable, :trackable, :validatable, :omniauthable, omniauth_providers: %i[facebook]
+  
+  before_save :ensure_authentication_token
+  
+  def self.from_omniauth(auth)
+>>>>>>> 8059d82e34799516e41c82ed2028b4b48797cadc
   where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
     user.email = auth.info.email
     user.password = Devise.friendly_token[0,20]

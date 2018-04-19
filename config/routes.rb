@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
+  get 'users/index'
+
   get 'report/index'
 
  resources :project_tags
   resources :project_tags
-  #devise_for :users, controllers: { confirmations: 'confirmations', omniauth_callbacks: 'users/omniauth_callbacks' }
-  #devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
-  devise_for :users, controllers: { confirmations: 'confirmations', omniauth_callbacks: 'auth/callbacks' }
+  devise_for :users, controllers: {sessions: 'users/sessions', registrations:"users/registrations"}
+  match '/users',   to: 'users#index',   via: 'get'
+  match '/users/:id',     to: 'users#show',       via: 'get'
   resources :tags
   resources :featured_projects
   resources :opinions
