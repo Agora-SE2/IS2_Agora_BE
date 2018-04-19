@@ -6,6 +6,7 @@ class CreateLawProjects < ActiveRecord::Migration
       t.date :publication_date
       t.integer :yes_votes
       t.integer :not_votes
+      t.string :image
 
       t.timestamps null: false
     end

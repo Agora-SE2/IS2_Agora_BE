@@ -13,6 +13,7 @@
 #a
 
 class LawProject < ActiveRecord::Base
+    mount_uploader :image, ImageUploader
     has_many :tags
     has_many :opinions
     has_many :galleries 
@@ -28,5 +29,7 @@ class LawProject < ActiveRecord::Base
     scope :recents, -> { where(created_at: (Time.now.midnight - 1.day)..Time.now.midnight) }
     scope :name_recents, -> { where(created_at: (Time.now.midnight - 1.day)..Time.now.midnight).pluck(:name) }
     scope :name_and_votes, -> { select("content","yes_votes","not_votes") }
+    
+    
     
 end

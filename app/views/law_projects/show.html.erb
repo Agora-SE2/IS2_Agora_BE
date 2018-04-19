@@ -24,6 +24,10 @@
   <strong>Not votes:</strong>
   <%= @law_project.not_votes %>
 </p>
+<p>
+  <strong>Image:</strong>
+  <%= image_tag @law_project.image %>
+</p>
 
 <%= link_to 'Edit', edit_law_project_path(@law_project) %> |
 <%= link_to 'Back', law_projects_path %>

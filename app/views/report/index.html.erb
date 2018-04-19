@@ -1,2 +1,130 @@
-<h1>PDF</h1>
-<p>REPORTE</p>
+<% @project_law=LawProject.find(params[:id]) %>
+            <%
+                @yes_percent=(@project_law.yes_votes*100)/(Integer(@project_law.yes_votes)+ Integer(@project_law.not_votes)).round(2)
+                @not_percent=(@project_law.not_votes*100)/(Integer(@project_law.yes_votes)+ Integer(@project_law.not_votes)).round(2)
+                
+                    
+            %>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="pdf.css">
+    <title></title>
+  </head>
+  <body>
+      <style>
+          @import url('https://fonts.googleapis.com/css?family=Merriweather');
+
+body{
+  font-family: 'Merriweather', serif;
+  padding: 50px;
+}
+
+#agoraLogo{
+  height: 100px;
+}
+
+#agoraLogoContainer{
+  text-align: center;
+}
+
+#barSection{
+  text-align: center;
+  width: 100%;
+  padding-left: 25%;
+  padding-right: 25%;
+}
+
+#bar{
+  height: 50px;
+  width: 100%;
+  background-color: #cccccc;
+}
+
+#positiveBar{
+  width: <%= @yes_percent.round(2) %>%;
+  height: inherit;
+  background-color: #aaaaaa;
+}
+
+#positiveVotes{
+  float: right;
+  margin-right: 20px;
+}
+
+#negativeVotes{
+  float: left;
+  margin-left: 20px;
+}
+
+#voteDescription{
+  text-align: center;
+}
+
+#footer{
+  text-align: center;
+}
+.column {
+    float: left;
+    width: 50%;
+}
+
+      </style>
+    <div class="container">
+      <div class="row" id="agoraLogoContainer">
+        
+        <center><%= wicked_pdf_image_tag 'logo', :class => "img-responsive", :style => "height:100px;" %></center>
+        
+        <h3>Ágora - Informe</h3>
+        <hr>
+        
+        <h3><%= @project_law.name %></h3>
+        <h5>A fecha de <%= @project_law.created_at.time.to_date %></h5>
+      </div>
+      <div class="row" id="barSection">
+        <div id="bar">
+          <div id="positiveBar">
+          </div>
+        </div>
+      </div>
+      <div class="row" id="voteSection">
+        <div class="column">
+          <div id="positiveVotes">
+            <h1><%= @project_law.yes_votes %></h1>
+            <p>Votos a favor</p>
+          </div>
+        </div>
+        <div class="column" >
+          <div id="id="negativeVotes"">
+            <h1><%= @project_law.not_votes %></h1>
+            <p>Votos en contra</p>
+          </div>
+        </div>
+        <div class="row" id="voteDescription">
+
+            <br>
+      </div>
+        <div class="row container-fluid">
+          <center><p>De un total de <%= @project_law.yes_votes+@project_law.not_votes %> votantes, se contabilizaron <%= @project_law.yes_votes %> votos a favor (<%= @yes_percent.round(2) %>%) y <%= @project_law.not_votes %> votos en contra (<%= @not_percent.round(2) %>%).</p></center>
+        </div>
+          <hr>
+
+        
+        <div class="row">
+          <h3>Descripción del proyecto de ley</h3>
+          <p id="projectDescription">
+              <%= @project_law.description %>
+          </p>
+        </div>
+
+      </div>
+      <hr>
+      <div class="row" id="footer">
+        <h6>Ágora (2018) - un proyecto por Los Investigados</h6>
+      </div>
+    </div>
+
+  </body>
+</html>

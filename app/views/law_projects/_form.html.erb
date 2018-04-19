@@ -1,4 +1,5 @@
-<%= form_for(@law_project) do |f| %>
+
+<%= form_for @law_project, html: { multipart: true } do |f| %>
   <% if @law_project.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@law_project.errors.count, "error") %> prohibited this law_project from being saved:</h2>
@@ -30,6 +31,10 @@
   <div class="field">
     <%= f.label :not_votes %><br>
     <%= f.number_field :not_votes %>
+  </div>
+  <div class="field">
+    <%= f.label :image %><br>
+    <%= f.file_field :image %>
   </div>
   <div class="actions">
     <%= f.submit %>
