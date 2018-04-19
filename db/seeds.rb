@@ -7,10 +7,59 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 require 'faker'
+
+1.times do |row|
+
+  Tag.create(
+  name: "Cultura",
+  icon_route: Faker::Date.backward(1)
+  )
+  
+  
+  Tag.create(
+  name: "Derecho",
+  icon_route: Faker::Date.backward(1)
+  )
+  
+  Tag.create(
+  name: "Crimen",
+  icon_route: Faker::Date.backward(1)
+  )
+  
+  Tag.create(
+  name: "Economía",
+  icon_route: Faker::Date.backward(1)
+  )
+  
+  Tag.create(
+  name: "Medio Ambiente",
+  icon_route: Faker::Date.backward(1)
+  )
+  
+  Tag.create(
+  name: "Salud",
+  icon_route: Faker::Date.backward(1)
+  )
+  
+  Tag.create(
+  name: "Educación",
+  icon_route: Faker::Date.backward(1)
+  )
+  
+  Tag.create(
+  name: "Ciencia",
+  icon_route: Faker::Date.backward(1)
+  )
+  
+  Tag.create(
+  name: "JEP",
+  icon_route: Faker::Date.backward(1)
+  )
+
+end 
+puts 'Listo Tags'
+
 puts 'Llenando LawProjects'
-
-
-
 100.times do |row|
   
   law=LawProject.create!(name: Faker::Name.first_name,
@@ -24,6 +73,11 @@ puts 'Llenando LawProjects'
     route: Faker::File.file_name('uploads', Faker::Config.random.seed, 'jpg', '/'))
   end
   
+  rand(1..4).times do |row|
+    ProjectTag.create!(
+    tag_id: law.id, 
+    law_project_id: rand(1..8))
+  end
     
   1.times do |row|
     
@@ -48,16 +102,8 @@ puts 'Llenando LawProjects'
     
   end
   puts 'Listo Users'
-
-  rand(1..10).times do
-    law.tags.create(
-    name: Faker::Lorem.word,
-    icon_route: Faker::Date.backward(1)
-    )
-  end
    
 end
-
 
 puts 'Completado LawProject'
 puts 'Inicio FeaturedProject'
