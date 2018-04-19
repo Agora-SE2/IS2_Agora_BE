@@ -34,8 +34,8 @@ Rails.application.configure do
   # ActionMailer::Base.deliveries array.
   config.action_mailer.delivery_method = :test
 
-  config.action_mailer.default_url_options = { :host => 'is2-agora-be-asantamariap.c9users.io' }
-  Rails.application.routes.default_url_options[:host] = 'is2-agora-be-asantamariap.c9users.io'
+  config.action_mailer.default_url_options = { :host => 'agora-se.herokuapp.com' }
+  Rails.application.routes.default_url_options[:host] = 'agora-se.herokuapp.com'
   # Print deprecation notices to the stderr.
   config.active_support.deprecation = :stderr
 

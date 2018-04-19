@@ -28,8 +28,8 @@ Rails.application.configure do
 
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
-  config.action_mailer.default_url_options = { :host => 'is2-agora-be-asantamariap.c9users.io' }
-  Rails.application.routes.default_url_options[:host] = 'is2-agora-be-asantamariap.c9users.io'
+  config.action_mailer.default_url_options = { :host => 'agora-se.herokuapp.com' }
+  Rails.application.routes.default_url_options[:host] = 'agora-se.herokuapp.com'
   config.action_mailer.perform_caching = false
 
   # Print deprecation notices to the Rails logger.
