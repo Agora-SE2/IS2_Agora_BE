@@ -8,6 +8,7 @@ class LawProjectsController < ApplicationController
   def index
     #@law_projects = LawProject.all
     @law_projects = LawProject.paginate(:page => params[:page], :per_page => 10)
+    #render json: @law_projects
   end
 
   # GET /law_projects/1
@@ -19,6 +20,7 @@ class LawProjectsController < ApplicationController
     #    render  :pdf => "file.pdf", :template => 'report/index.html.erb'
     #  end
     #end
+    render json: @law_project
   end
 
   # GET /law_projects/new
