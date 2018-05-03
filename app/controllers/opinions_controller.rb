@@ -27,6 +27,7 @@ class OpinionsController < ApplicationController
       @opinions = Opinion.opinions_of_this_lp(params[:law_project])
     else
       @opinions = Opinion.paginate(:page => params[:page], :per_page => 10)
+      #@opinions = Opinion.ordered_by_likes().paginate(:page => params[:page], :per_page => 10)
     end
     #@Pro = 1
     #
