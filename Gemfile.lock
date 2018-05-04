@@ -95,6 +95,8 @@ GEM
     ffi (1.9.23)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
+    google-id-token (1.4.2)
+      jwt (>= 1)
     hashie (3.5.7)
     i18n (1.0.1)
       concurrent-ruby (~> 1.0)
@@ -258,6 +260,7 @@ DEPENDENCIES
   coffee-rails (~> 4.1.0)
   devise
   faker!
+  google-id-token
   jbuilder (~> 2.0)
   jquery-rails
   koala

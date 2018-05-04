@@ -29,10 +29,8 @@ class FeaturedProjectsController < ApplicationController
 
     respond_to do |format|
       if @featured_project.save
-        format.html { redirect_to @featured_project, notice: 'Featured project was successfully created.' }
         format.json { render :show, status: :created, location: @featured_project }
       else
-        format.html { render :new }
         format.json { render json: @featured_project.errors, status: :unprocessable_entity }
       end
     end
@@ -43,10 +41,8 @@ class FeaturedProjectsController < ApplicationController
   def update
     respond_to do |format|
       if @featured_project.update(featured_project_params)
-        format.html { redirect_to @featured_project, notice: 'Featured project was successfully updated.' }
         format.json { render :show, status: :ok, location: @featured_project }
       else
-        format.html { render :edit }
         format.json { render json: @featured_project.errors, status: :unprocessable_entity }
       end
     end
@@ -57,7 +53,6 @@ class FeaturedProjectsController < ApplicationController
   def destroy
     @featured_project.destroy
     respond_to do |format|
-      format.html { redirect_to featured_projects_url, notice: 'Featured project was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

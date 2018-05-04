@@ -38,6 +38,7 @@ gem 'carrierwave', '~> 0.10.0'
 gem 'paperclip', '~> 4.1'
 gem 'oauth2'
 gem 'koala'
+gem 'google-id-token'
 gem 'active_model_serializers'
 #gem 'omniauth-facebook-access-token'
 # Use ActiveModel has_secure_password

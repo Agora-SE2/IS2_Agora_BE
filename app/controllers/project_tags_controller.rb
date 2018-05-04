@@ -31,10 +31,10 @@ class ProjectTagsController < ApplicationController
 
     respond_to do |format|
       if @project_tag.save
-        format.html { redirect_to @project_tag, notice: 'Project tag was successfully created.' }
+        
         format.json { render :show, status: :created, location: @project_tag }
       else
-        format.html { render :new }
+        
         format.json { render json: @project_tag.errors, status: :unprocessable_entity }
       end
     end
@@ -45,10 +45,10 @@ class ProjectTagsController < ApplicationController
   def update
     respond_to do |format|
       if @project_tag.update(project_tag_params)
-        format.html { redirect_to @project_tag, notice: 'Project tag was successfully updated.' }
+        
         format.json { render :show, status: :ok, location: @project_tag }
       else
-        format.html { render :edit }
+        
         format.json { render json: @project_tag.errors, status: :unprocessable_entity }
       end
     end
@@ -59,7 +59,7 @@ class ProjectTagsController < ApplicationController
   def destroy
     @project_tag.destroy
     respond_to do |format|
-      format.html { redirect_to project_tags_url, notice: 'Project tag was successfully destroyed.' }
+      
       format.json { head :no_content }
     end
   end

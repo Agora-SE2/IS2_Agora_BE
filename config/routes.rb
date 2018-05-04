@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  post 'token/index'
+
   get 'users/index'
 
   get 'report/index'
