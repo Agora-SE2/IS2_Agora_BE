@@ -7,6 +7,8 @@ class CreateLawProjects < ActiveRecord::Migration
       t.integer :yes_votes
       t.integer :not_votes
       t.string :image
+      t.string :speaker
+      t.integer :state
 
       t.timestamps null: false
     end

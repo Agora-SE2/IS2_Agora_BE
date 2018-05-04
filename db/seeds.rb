@@ -66,7 +66,9 @@ puts 'Llenando LawProjects'
   description: Faker::Lorem.paragraph, 
   publication_date: Faker::Date.backward(1),
   yes_votes: Faker::Number.number(3), 
-  not_votes: Faker::Number.number(3))
+  not_votes: Faker::Number.number(3),
+  speaker: Faker::Name.name,
+  state: 0)
   
   rand(1..10).times do
     law.galleries.create!(
