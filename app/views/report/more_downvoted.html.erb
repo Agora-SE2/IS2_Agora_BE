@@ -1,0 +1,277 @@
+<% @project_laws=LawProject.order_by_downvotes().paginate(:page => 1, :per_page => 5) %>
+            <%
+                @yes_percent1=(@project_laws[0].yes_votes*100)/(Integer(@project_laws[0].yes_votes)+ Integer(@project_laws[0].not_votes)).round(2)
+                @not_percent1=(@project_laws[0].not_votes*100)/(Integer(@project_laws[0].yes_votes)+ Integer(@project_laws[0].not_votes)).round(2)
+                
+                @yes_percent2=(@project_laws[1].yes_votes*100)/(Integer(@project_laws[1].yes_votes)+ Integer(@project_laws[1].not_votes)).round(2)
+                @not_percent2=(@project_laws[1].not_votes*100)/(Integer(@project_laws[1].yes_votes)+ Integer(@project_laws[1].not_votes)).round(2)
+                
+                @yes_percent3=(@project_laws[2].yes_votes*100)/(Integer(@project_laws[2].yes_votes)+ Integer(@project_laws[2].not_votes)).round(2)
+                @not_percent3=(@project_laws[2].not_votes*100)/(Integer(@project_laws[2].yes_votes)+ Integer(@project_laws[2].not_votes)).round(2)
+                
+                @yes_percent4=(@project_laws[3].yes_votes*100)/(Integer(@project_laws[3].yes_votes)+ Integer(@project_laws[3].not_votes)).round(2)
+                @not_percent4=(@project_laws[3].not_votes*100)/(Integer(@project_laws[3].yes_votes)+ Integer(@project_laws[3].not_votes)).round(2)
+                
+                @yes_percent5=(@project_laws[4].yes_votes*100)/(Integer(@project_laws[4].yes_votes)+ Integer(@project_laws[4].not_votes)).round(2)
+                @not_percent5=(@project_laws[4].not_votes*100)/(Integer(@project_laws[4].yes_votes)+ Integer(@project_laws[4].not_votes)).round(2)
+                    
+            %>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="pdf.css">
+    <title></title>
+  </head>
+  <body>
+      <style>
+          @import url('https://fonts.googleapis.com/css?family=Merriweather');
+
+body{
+  font-family: 'Merriweather', serif;
+  padding: 50px;
+}
+
+#agoraLogo{
+  height: 100px;
+}
+
+#agoraLogoContainer{
+  text-align: center;
+}
+
+#barSection{
+  text-align: center;
+  width: 100%;
+  padding-left: 0%;
+  padding-right: 0%;
+}
+
+#bar1{
+    margin-top: 30px;
+    float:left;
+  height: 35px;
+  width: 60%;
+  background-color: #fd8200;
+}
+
+#positiveBar1{
+  width: <%= @yes_percent1.round(2) %>%;
+  height: inherit;
+  background-color: #3561b8;
+}
+
+#bar2{
+    margin-top: 30px;
+    float:left;
+  height: 35px;
+  width: 60%;
+  background-color: #fd8200;
+}
+
+#positiveBar2{
+  width: <%= @yes_percent2.round(2) %>%;
+  height: inherit;
+  background-color: #3561b8;
+}
+
+#bar3{
+    margin-top: 30px;
+    float:left;
+  height: 35px;
+  width: 60%;
+  background-color: #fd8200;
+}
+
+#positiveBar3{
+  width: <%= @yes_percent3.round(2) %>%;
+  height: inherit;
+  background-color: #3561b8;
+}
+
+#bar4{
+    margin-top: 30px;
+    float:left;
+  height: 35px;
+  width: 60%;
+  background-color: #fd8200;
+}
+
+#positiveBar4{
+  width: <%= @yes_percent4.round(2) %>%;
+  height: inherit;
+  background-color: #3561b8;
+}
+
+#bar5{
+    margin-top: 30px;
+    float:left;
+  height: 35px;
+  width: 60%;
+  background-color: #fd8200;
+}
+
+#positiveBar5{
+  width: <%= @yes_percent5.round(2) %>%;
+  height: inherit;
+  background-color: #3561b8;
+}
+
+#positiveVotes{
+  margin-right: 20px;
+}
+
+#negativeVotes{
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+#voteDescription{
+  text-align: center;
+}
+
+#footer{
+  text-align: center;
+}
+.column {
+    width: 20%;
+    float:left;
+}
+
+      </style>
+    <div class="container">
+      <div class="row" id="agoraLogoContainer">
+        
+        <center><%= wicked_pdf_image_tag 'logo', :class => "img-responsive", :style => "height:80px;" %></center>
+        
+        <h4>Ágora - Informe</h4>
+        <hr>
+        
+        <h5>Este reporte se genera a fecha de <%= @project_laws[0].created_at.time.to_date %>. <br> los proyectos con mayor cantidad de votos en contra son:</h5>
+      </div>
+        
+        <center><h3><%= @project_laws[0].name %></h3></center>
+        <div class="row" id="barSection">
+            <div class="column">
+                <div id="positiveVotes">
+                    <h4><%= @project_laws[0].yes_votes %></h4>
+                    <p>Votos a favor</p>
+                </div>
+            </div>
+                
+            <div id="bar1">
+                <div id="positiveBar1">
+                </div>
+            </div>
+            
+            <div class="column" >
+                <div id="negativeVotes">
+                    <h4><%= @project_laws[0].not_votes %></h4>
+                    <p>Votos en contra</p>
+                </div>
+            </div>
+        </div>
+        
+        <center><h4><%= @project_laws[1].name %></h4></center>
+        <div class="row" id="barSection">
+            <div class="column">
+                <div id="positiveVotes">
+                    <h4><%= @project_laws[1].yes_votes %></h4>
+                    <p>Votos a favor</p>
+                </div>
+            </div>
+                
+            <div id="bar2">
+                <div id="positiveBar2">
+                </div>
+            </div>
+            
+            <div class="column" >
+                <div id="negativeVotes">
+                    <h4><%= @project_laws[1].not_votes %></h4>
+                    <p>Votos en contra</p>
+                </div>
+            </div>
+        </div>
+        
+        <center><h4><%= @project_laws[2].name %></h4></center>
+        <div class="row" id="barSection">
+            <div class="column">
+                <div id="positiveVotes">
+                    <h4><%= @project_laws[2].yes_votes %></h4>
+                    <p>Votos a favor</p>
+                </div>
+            </div>
+                
+            <div id="bar3">
+                <div id="positiveBar3">
+                </div>
+            </div>
+            
+            <div class="column" >
+                <div id="negativeVotes">
+                    <h4><%= @project_laws[2].not_votes %></h4>
+                    <p>Votos en contra</p>
+                </div>
+            </div>
+        </div>
+        
+        <center><h4><%= @project_laws[3].name %></h4></center>
+        <div class="row" id="barSection">
+            <div class="column">
+                <div id="positiveVotes">
+                    <h4><%= @project_laws[3].yes_votes %></h4>
+                    <p>Votos a favor</p>
+                </div>
+            </div>
+                
+            <div id="bar4">
+                <div id="positiveBar4">
+                </div>
+            </div>
+            
+            <div class="column" >
+                <div id="negativeVotes">
+                    <h4><%= @project_laws[3].not_votes %></h4>
+                    <p>Votos en contra</p>
+                </div>
+            </div>
+        </div>
+        
+        <center><h4><%= @project_laws[4].name %></h4></center>
+        <div class="row" id="barSection">
+            <div class="column">
+                <div id="positiveVotes">
+                    <h4><%= @project_laws[4].yes_votes %></h4>
+                    <p>Votos a favor</p>
+                </div>
+            </div>
+                
+            <div id="bar5">
+                <div id="positiveBar5">
+                </div>
+            </div>
+            
+            
+            <div class="column" >
+                <div id="negativeVotes">
+                    <h4><%= @project_laws[4].not_votes %></h4>
+                    <p>Votos en contra</p>
+                </div>
+            </div>
+        </div>
+        <div class="row" id="voteDescription">
+
+            <br>
+      </div>
+          <hr>
+
+      </div>
+      <div class="row" id="footer">
+        <h6>Ágora (2018) - un proyecto por Los Investigados</h6>
+      </div>
+    </div>
+
+  </body>
+</html>
