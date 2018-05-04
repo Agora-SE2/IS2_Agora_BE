@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  post 'token/index'
+
   get 'users/index'
 
   get 'report/index'
@@ -12,7 +14,7 @@ Rails.application.routes.draw do
   resources :featured_projects
   resources :opinions
   resources :galleries
-  resources :law_projects
+  resources :law_projects, defaults: {format: :json}
   get 'home/index'
   root 'home#index'
 end

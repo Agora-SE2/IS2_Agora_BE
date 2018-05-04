@@ -13,12 +13,13 @@ class LawProjectsController < ApplicationController
   # GET /law_projects/1
   # GET /law_projects/1.json
   def show
-    #respond_to do |format|
-    #  format.html
-    #  format.pdf do
-    #    render  :pdf => "file.pdf", :template => 'report/index.html.erb'
-    #  end
-    #end
+    if params[:format] == "pdf"
+    respond_to do |format|
+      format.pdf do
+        render  :pdf => "file.pdf", :template => 'report/index.html.erb'
+      end
+    end
+  end
   end
 
   # GET /law_projects/new
@@ -74,6 +75,6 @@ class LawProjectsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def law_project_params
-      params.require(:law_project).permit(:name, :description, :publication_date, :yes_votes, :not_votes, :image)
+      params.permit(:law_project, :name, :description, :publication_date, :yes_votes, :not_votes, :image)
     end
 end
