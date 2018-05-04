@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 20180419064427) do
     t.integer  "not_votes"
     t.string   "image"
     t.string   "speaker"
-    t.integer  "state",            default: 0
+    t.integer  "state"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
   end
@@ -111,7 +111,6 @@ ActiveRecord::Schema.define(version: 20180419064427) do
     t.string   "user_name"
     t.string   "description"
     t.boolean  "is_admin",                          default: false
-    t.string   "provider"
     t.string   "uid"
     t.string   "name"
     t.text     "image"

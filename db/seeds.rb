@@ -87,7 +87,10 @@ puts 'Llenando LawProjects'
     password: 'topsecret', 
     password_confirmation: 'topsecret',
     is_admin: Faker::Boolean,
-    sign_in_count: Faker::Number.number(2))
+    sign_in_count: Faker::Number.number(2),
+    user_name: Faker::Twitter.screen_name,
+    birth_name: Faker::Superhero.name,
+    description: Faker::ChuckNorris.fact)
     
     user.save!
     
