@@ -8,6 +8,7 @@ class LawProjectsController < ApplicationController
   def index
     #@law_projects = LawProject.all
     @law_projects = LawProject.paginate(:page => params[:page], :per_page => 10)
+    #render json: @law_projects
   end
 
   # GET /law_projects/1

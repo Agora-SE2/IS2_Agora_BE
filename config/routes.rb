@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
  resources :project_tags
   resources :project_tags
-  devise_for :users, controllers: {sessions: 'users/sessions', registrations:"users/registrations"}
+  devise_for :users, controllers: {sessions: 'users/sessions', registrations:"users/registrations", confirmations: 'confirmations'}
   match '/users',   to: 'users#index',   via: 'get'
   match '/users/:id',     to: 'users#show',       via: 'get'
   resources :tags

@@ -16,7 +16,7 @@ def create
 
     if resource.valid_password?(params[:password])
       sign_in("user", resource)
-      render :json=> {:id=>resource.id, :success=>true, :auth_token=>resource.authentication_token,  :email=>resource.email, :isAdmin=>user.is_admin, :birthName=>user.birth_name, :userName=>user.user_name}
+      render :json=> {:id=>resource.id, :success=>true, :auth_token=>resource.authentication_token,  :email=>resource.email, :isAdmin=>resource.is_admin, :birthName=>resource.birth_name, :userName=>resource.user_name}
       return
     end
     invalid_login_attempt
@@ -46,7 +46,7 @@ end
 
   def ensure_params_exist
       return unless params[:email].blank? or params[:password].blank?
-    render :json=>{:success=>false, :message=>"missing  parameter"}, :status=>422
+    render :json=>{:success=>false, :message=>"Existent email"}
   end
 
   # If you have extra params to permit, append them to the sanitizer.
