@@ -36,6 +36,7 @@ class OpinionsController < ApplicationController
   # GET /opinions/1
   # GET /opinions/1.json
   def show
+    render json: @opinion
   end
 
   # GET /opinions/new
