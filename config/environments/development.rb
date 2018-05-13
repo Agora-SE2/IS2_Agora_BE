@@ -39,9 +39,9 @@ Rails.application.configure do
     :port => 587,
     :domain => "gmail.com",
     :authentication => :login,
-    :user_name => "[asantamariap14]",
+    :user_name => "[se2agora]",
     :password => "[As98041465123]"}
-  
+
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
 
@@ -52,7 +52,7 @@ Rails.application.configure do
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
   config.assets.debug = true
-  
+
   config.action_mailer.default_url_options = { :host => 'localhost' }
 
   # Suppress logger output for asset requests.
