@@ -14,7 +14,8 @@
 
 class LawProject < ActiveRecord::Base
     mount_uploader :image, ImageUploader
-    has_many :tags
+    has_many :project_tags
+    has_many :tags, through: :project_tags
     has_many :opinions
     has_many :galleries 
     belongs_to :featured_projects
@@ -32,6 +33,7 @@ class LawProject < ActiveRecord::Base
     scope :order_by_upvotes, -> { order("yes_votes": :desc) }
     scope :order_by_downvotes, -> { order("not_votes": :desc) }
     scope :order_by_opinions, -> { select("law_projects.*, COUNT(opinions.id) as opinions_count").joins("LEFT OUTER JOIN opinions ON (opinions.law_project_id = law_projects.id)").group("opinions.law_project_id").order("opinions_count DESC") }
-    scope :get_by_name, -> (name){where("lower(name) LIKE ?", "%#{name.downcase}%")}
+    scope :get_by_name, -> (name){where("lower(law_projects.name) LIKE ?", "%#{name.downcase}%")}
+    scope :get_by_tag, -> (tag){joins(:tags).where(tags: { name: tag })}
     
 end

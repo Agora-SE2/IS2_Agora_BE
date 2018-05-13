@@ -6,11 +6,14 @@ class LawProjectsController < ApplicationController
   # GET /law_projects
   # GET /law_projects.json
   def index
-     if params[:name]
+      if params[:name]
         @law_projects= LawProject.get_by_name(params[:name])
       else
         @law_projects = LawProject.all
         #@law_projects = LawProject.paginate(:page => params[:page], :per_page => 10)
+      end
+      if params[:tag]
+        @law_projects= @law_projects.get_by_tag(params[:tag])
       end
     render json: @law_projects.paginate(:page => params[:page], :per_page => 10)
     
@@ -25,7 +28,7 @@ class LawProjectsController < ApplicationController
         render  :pdf => "file.pdf", :template => 'report/index.html.erb'
       end
       format.json do
-        render json: @law_project, include: "opinions.user"
+        render json: @law_project, include: ['tags',"opinions.user"]
       end
     end
   end
