@@ -24,16 +24,16 @@ Rails.application.configure do
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
   config.assets.compile = false
-  config.action_mailer.default_url_options = { host: 'https://agora-se.herokuapp.com/' }
+  config.action_mailer.default_url_options = { host: 'localhost' }
   ActionMailer::Base.delivery_method = :smtp
 ActionMailer::Base.smtp_settings = {
   address:              'smtp.gmail.com',
   port:                 587,
-  domain:               'agora-se.herokuapp.com/',
+  domain:               'localhost',
   user_name:            "se2agora@gmail.com",
   password:             "Ingenieria",
   authentication:       'plain',
-  enable_starttls_auto: true 
+  enable_starttls_auto: true
 }
   # `config.assets.precompile` and `config.assets.version` have moved to config/initializers/assets.rb
 
@@ -85,7 +85,7 @@ ActionMailer::Base.smtp_settings = {
   # require 'syslog/logger'
   # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new 'app-name')
   config.action_mailer.default_url_options = { :host => 'localhost' }
-  
+
   if ENV["RAILS_LOG_TO_STDOUT"].present?
     logger           = ActiveSupport::Logger.new(STDOUT)
     logger.formatter = config.log_formatter
