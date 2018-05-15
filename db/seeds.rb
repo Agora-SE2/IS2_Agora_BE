@@ -66,7 +66,9 @@ puts 'Llenando LawProjects'
   description: Faker::Lorem.paragraph, 
   publication_date: Faker::Date.backward(1),
   yes_votes: Faker::Number.number(3), 
-  not_votes: Faker::Number.number(3))
+  not_votes: Faker::Number.number(3),
+  speaker: Faker::Name.name,
+  state: 0)
   
   rand(1..10).times do
     law.galleries.create!(
@@ -85,7 +87,10 @@ puts 'Llenando LawProjects'
     password: 'topsecret', 
     password_confirmation: 'topsecret',
     is_admin: Faker::Boolean,
-    sign_in_count: Faker::Number.number(2))
+    sign_in_count: Faker::Number.number(2),
+    user_name: Faker::Twitter.screen_name,
+    birth_name: Faker::Superhero.name,
+    description: Faker::ChuckNorris.fact)
     
     user.save!
     

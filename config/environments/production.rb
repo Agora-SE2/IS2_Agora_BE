@@ -23,18 +23,17 @@ Rails.application.configure do
   # config.assets.css_compressor = :sass
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
-  config.assets.compile = false
-  config.action_mailer.default_url_options = { host: 'https://agora-se.herokuapp.com/' }
-  ActionMailer::Base.delivery_method = :smtp
-ActionMailer::Base.smtp_settings = {
-  address:              'smtp.gmail.com',
-  port:                 587,
-  domain:               'agora-se.herokuapp.com/',
-  user_name:            "se2agora@gmail.com",
-  password:             "Ingenieria",
-  authentication:       'plain',
-  enable_starttls_auto: true 
-}
+  config.action_mailer.default_url_options = { :host => 'agora-se.herokuapp.com' }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+      :address              => 'smtp.gmail.com',
+      :port                 => 587,
+      :domain               => 'gmail.com',
+      :user_name            => 'se2agora@gmail.com',
+      :password             => 'Ingenieria',
+      :authentication       => 'login',
+      :enable_starttls_auto => true
+  }
   # `config.assets.precompile` and `config.assets.version` have moved to config/initializers/assets.rb
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
@@ -84,8 +83,7 @@ ActionMailer::Base.smtp_settings = {
   # Use a different logger for distributed setups.
   # require 'syslog/logger'
   # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new 'app-name')
-  config.action_mailer.default_url_options = { :host => 'localhost' }
-  
+
   if ENV["RAILS_LOG_TO_STDOUT"].present?
     logger           = ActiveSupport::Logger.new(STDOUT)
     logger.formatter = config.log_formatter

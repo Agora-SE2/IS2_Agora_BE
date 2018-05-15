@@ -21,7 +21,10 @@ class User < ActiveRecord::Base
   #mount_uploader :avatar, AvatarUploader
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
+
+  has_many :opinions
+
+  devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :omniauth_providers => [:facebook]
   before_save :ensure_authentication_token
          def self.new_with_session(params, session)
@@ -49,5 +52,5 @@ def self.create_from_omniauth(params)
     })
     user
   end
-  
+
 end

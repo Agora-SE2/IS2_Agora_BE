@@ -6,21 +6,31 @@ class LawProjectsController < ApplicationController
   # GET /law_projects
   # GET /law_projects.json
   def index
-    #@law_projects = LawProject.all
-    @law_projects = LawProject.paginate(:page => params[:page], :per_page => 10)
-    #render json: @law_projects
+      if params[:name]
+        @law_projects= LawProject.get_by_name(params[:name])
+      else
+        @law_projects = LawProject.all
+        #@law_projects = LawProject.paginate(:page => params[:page], :per_page => 10)
+      end
+      if params[:tag]
+        @law_projects= @law_projects.get_by_tag(params[:tag])
+      end
+    render json: @law_projects.paginate(:page => params[:page], :per_page => 10)
+    
   end
 
   # GET /law_projects/1
   # GET /law_projects/1.json
   def show
-    if params[:format] == "pdf"
     respond_to do |format|
+      format.html
       format.pdf do
         render  :pdf => "file.pdf", :template => 'report/index.html.erb'
       end
+      format.json do
+        render json: @law_project, include: ['tags',"opinions.user"]
+      end
     end
-  end
   end
 
   # GET /law_projects/new
@@ -40,8 +50,10 @@ class LawProjectsController < ApplicationController
     respond_to do |format|
       if @law_project.save
         NotificationMailer.notification_email(@law_project).deliver_later
+        format.html { redirect_to @law_project, notice: 'Law project was successfully created.' }
         format.json { render :show, status: :created, location: @law_project }
       else
+        format.html { render :new }
         format.json { render json: @law_project.errors, status: :unprocessable_entity }
       end
     end
@@ -52,8 +64,10 @@ class LawProjectsController < ApplicationController
   def update
     respond_to do |format|
       if @law_project.update(law_project_params)
+        format.html { redirect_to @law_project, notice: 'Law project was successfully updated.' }
         format.json { render :show, status: :ok, location: @law_project }
       else
+        format.html { render :edit }
         format.json { render json: @law_project.errors, status: :unprocessable_entity }
       end
     end
@@ -64,6 +78,7 @@ class LawProjectsController < ApplicationController
   def destroy
     @law_project.destroy
     respond_to do |format|
+      format.html { redirect_to law_projects_url, notice: 'Law project was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -76,6 +91,6 @@ class LawProjectsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def law_project_params
-      params.permit(:law_project, :name, :description, :publication_date, :yes_votes, :not_votes, :image)
+      params.require(:law_project).permit(:name, :description, :publication_date, :yes_votes, :not_votes, :image)
     end
 end
