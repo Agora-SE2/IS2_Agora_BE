@@ -16,7 +16,7 @@ class Opinion < ActiveRecord::Base
     belongs_to :law_project
     belongs_to :user
     
-    validates :content, :presence => true
+    validates :content, :presence => true, :format => {:with => /\A[a-zA-Z]+\z/, :message => "La opinión tiene palabras que no están permitidas."}
     validates :date, :presence => true
     validates :like, :presence => true, :format => {:with => /\A\d+\z/, :message => "el campo \"likes\" no tiene el formato correcto, inténtelo de nuevo."}
     
