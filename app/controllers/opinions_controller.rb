@@ -55,8 +55,8 @@ class OpinionsController < ApplicationController
 
     respond_to do |format|
       if @opinion.save
-        OpinionMailer.opinion_email(@opinion).deliver_later
-        SaveOpinionMailer.save_opinion_email(current_user.email).deliver_later
+        #OpinionMailer.opinion_email(@opinion).deliver_later
+        #SaveOpinionMailer.save_opinion_email(current_user.email).deliver_later
         format.json { render :show, status: :created, location: @opinion }
       else
         format.json { render json: @opinion.errors, status: :unprocessable_entity }
@@ -93,6 +93,6 @@ class OpinionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def opinion_params
-      params.require(:opinion).permit(:content, :date, :like, :pro, :project, :ispro, :law_project)
+      params.require(:opinion).permit(:content, :date, :like, :pro, :user_id, :law_project_id)
     end
 end
