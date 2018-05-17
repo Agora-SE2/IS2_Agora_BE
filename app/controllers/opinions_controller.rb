@@ -18,15 +18,15 @@ class OpinionsController < ApplicationController
     #@opinions = Opinion.all
     if params[:project] && params[:ispro]
       if params[:ispro] == "true"
-        @opinions= Opinion.pro_opinions_by_id(params[:project])
+         render json: @opinions= Opinion.pro_opinions_by_id(params[:project])
       else
-        @opinions= Opinion.against_opinions_by_id(params[:project])
+         render json: @opinions= Opinion.against_opinions_by_id(params[:project])
       end
       
     elsif params[:law_project]
-      @opinions = Opinion.opinions_of_this_lp(params[:law_project])
+       render json: @opinions = Opinion.opinions_of_this_lp(params[:law_project])
     else
-      @opinions = Opinion.paginate(:page => params[:page], :per_page => 10)
+       render json: @opinions = Opinion.paginate(:page => params[:page], :per_page => 10)
       #@opinions = Opinion.ordered_by_likes().paginate(:page => params[:page], :per_page => 10)
     end
     #@Pro = 1
