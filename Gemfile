@@ -40,6 +40,7 @@ gem 'oauth2'
 gem 'koala'
 gem 'google-id-token'
 gem 'active_model_serializers'
+gem 'whenever', require: false
 #gem 'omniauth-facebook-access-token'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

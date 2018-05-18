@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>¿Ya exploraste lo último en Ágora?</h1>
+        
+    <% @Last_Projects= LawProject.last(1).reverse %>
+    <h2><%= @Last_Projects.name %></h2>
+        <p><%= @Last_Projects.description %></p>
+    
+    <hr>
+    
+    <% @Last_Projects= LawProject.last(2).reverse %>
+    <h2><%= @Last_Projects.name %></h2>
+        <p><%= @Last_Projects.description %></p>
+        
+    <hr>
+    
+    <% @Last_Projects= LawProject.last(3).reverse %>
+    <h2><%= @Last_Projects.name %></h2>
+        <p><%= @Last_Projects.description %></p>
+    
+    <p>Ágora software!</p>
+  </body>
+</html>

@@ -8,9 +8,10 @@
 #  publication_date :date
 #  yes_votes        :integer
 #  not_votes        :integer
+#  image            :string
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
-#a
+#
 
 class LawProject < ActiveRecord::Base
     mount_uploader :image, ImageUploader
