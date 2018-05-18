@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :opinion_reports
   resources :likes, defaults: {format: :json}
   post 'token/index', defaults: {format: :json}
 

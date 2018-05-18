@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180504051239) do
+ActiveRecord::Schema.define(version: 20180518090741) do
 
   create_table "featured_projects", force: :cascade do |t|
     t.integer  "year"
@@ -35,8 +35,6 @@ ActiveRecord::Schema.define(version: 20180504051239) do
     t.integer  "yes_votes"
     t.integer  "not_votes"
     t.string   "image"
-    t.string   "speaker"
-    t.integer  "state"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
   end
@@ -63,6 +61,16 @@ ActiveRecord::Schema.define(version: 20180504051239) do
     t.datetime "updated_at",                          null: false
     t.index ["email"], name: "index_models_on_email", unique: true
     t.index ["reset_password_token"], name: "index_models_on_reset_password_token", unique: true
+  end
+
+  create_table "opinion_reports", force: :cascade do |t|
+    t.integer  "opinion_id"
+    t.string   "reason"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["opinion_id"], name: "index_opinion_reports_on_opinion_id"
+    t.index ["user_id"], name: "index_opinion_reports_on_user_id"
   end
 
   create_table "opinions", force: :cascade do |t|
