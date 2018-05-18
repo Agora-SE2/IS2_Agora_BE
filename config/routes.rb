@@ -1,26 +1,27 @@
 Rails.application.routes.draw do
   resources :likes, defaults: {format: :json}
-  post 'token/index'
+  post 'token/index', defaults: {format: :json}
 
-  get 'users/index'
+  get 'users/index', defaults: {format: :json}
 
-  get 'report/index'
+  get 'report/index', defaults: {format: :json}
 
   resources :project_tags, defaults: {format: :json}
-  devise_for :users, controllers: {sessions: 'users/sessions', registrations:"users/registrations", confirmations: 'confirmations'}
-  match '/users',   to: 'users#index',   via: 'get'
-  match '/users/:id',   to: 'users#update',   via: 'put'
-  match '/users/:id',     to: 'users#show',       via: 'get'
-  resources :tags
-  resources :featured_projects
-  resources :opinions
-  resources :galleries
-  resources :law_projects
+  devise_for :users, controllers: {sessions: 'users/sessions', registrations:"users/registrations", confirmations: 'confirmations'}, defaults: {format: :json}
+  match '/users',   to: 'users#index',   via: 'get', defaults: {format: :json}
+  match '/users/:id',   to: 'users#update',   via: 'put', defaults: {format: :json}
+  match '/users/:id',     to: 'users#show',       via: 'get', defaults: {format: :json}
+
+  resources :tags, defaults: {format: :json}
+  resources :featured_projects, defaults: {format: :json}
+  resources :opinions, defaults: {format: :json}
+  resources :galleries, defaults: {format: :json}
+  resources :law_projects, defaults: {format: :json}
   scope '/stats' do
-    resources :more_upvoted, only: [:index], :controller => 'stats/more_upvoted'
-    resources :more_downvoted, only: [:index], :controller => 'stats/more_downvoted'
-    resources :more_commented, only: [:index], :controller => 'stats/more_commented'
+    resources :more_upvoted, only: [:index], :controller => 'stats/more_upvoted', defaults: {format: :json}
+    resources :more_downvoted, only: [:index], :controller => 'stats/more_downvoted', defaults: {format: :json}
+    resources :more_commented, only: [:index], :controller => 'stats/more_commented', defaults: {format: :json}
   end
-  get 'home/index'
+  get 'home/index', defaults: {format: :json}
   root 'home#index'
 end
