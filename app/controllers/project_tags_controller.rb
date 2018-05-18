@@ -72,6 +72,6 @@ class ProjectTagsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def project_tag_params
-      params.require(:project_tag).permit(:tag_id, :law_project_id)
+      params.fetch(:project_tag, {})
     end
 end

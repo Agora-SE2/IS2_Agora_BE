@@ -1,49 +1,48 @@
 require 'test_helper'
 
-class ProjectTagsControllerTest < ActionController::TestCase
+class ProjectTagsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @project_tag = project_tags(:one)
   end
 
   test "should get index" do
-    get :index
+    get project_tags_url
     assert_response :success
-    assert_not_nil assigns(:project_tags)
   end
 
   test "should get new" do
-    get :new
+    get new_project_tag_url
     assert_response :success
   end
 
   test "should create project_tag" do
     assert_difference('ProjectTag.count') do
-      post :create, project_tag: { law_project_id: @project_tag.law_project_id, tag_id: @project_tag.tag_id }
+      post project_tags_url, params: { project_tag: {  } }
     end
 
-    assert_redirected_to project_tag_path(assigns(:project_tag))
+    assert_redirected_to project_tag_url(ProjectTag.last)
   end
 
   test "should show project_tag" do
-    get :show, id: @project_tag
+    get project_tag_url(@project_tag)
     assert_response :success
   end
 
   test "should get edit" do
-    get :edit, id: @project_tag
+    get edit_project_tag_url(@project_tag)
     assert_response :success
   end
 
   test "should update project_tag" do
-    patch :update, id: @project_tag, project_tag: { law_project_id: @project_tag.law_project_id, tag_id: @project_tag.tag_id }
-    assert_redirected_to project_tag_path(assigns(:project_tag))
+    patch project_tag_url(@project_tag), params: { project_tag: {  } }
+    assert_redirected_to project_tag_url(@project_tag)
   end
 
   test "should destroy project_tag" do
     assert_difference('ProjectTag.count', -1) do
-      delete :destroy, id: @project_tag
+      delete project_tag_url(@project_tag)
     end
 
-    assert_redirected_to project_tags_path
+    assert_redirected_to project_tags_url
   end
 end

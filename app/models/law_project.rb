@@ -14,7 +14,9 @@
 #
 
 class LawProject < ActiveRecord::Base
+
     mount_uploader :image, ImageUploader
+
     has_many :project_tags
     has_many :tags, through: :project_tags
     has_many :opinions

@@ -31,4 +31,5 @@ class Opinion < ActiveRecord::Base
     scope :content_pro, -> { where(pro: true).pluck(:content) }
     scope :content_against, -> { where(pro: false).pluck(:content) }
     scope :ordered_by_likes, -> { reorder(like: :desc) }
+    
 end
