@@ -51,7 +51,7 @@ class LawProjectsController < ApplicationController
       if @law_project.save
         NotificationMailer.notification_email(@law_project).deliver_later
         format.html { redirect_to @law_project, notice: 'Law project was successfully created.' }
-        format.json { render :show, status: :created, location: @law_project }
+        format.json { render json: @law_project }
       else
         format.html { render :new }
         format.json { render json: @law_project.errors, status: :unprocessable_entity }
@@ -91,6 +91,6 @@ class LawProjectsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def law_project_params
-      params.require(:law_project).permit(:name, :description, :publication_date, :yes_votes, :not_votes, :image)
+      params.require(:law_project).permit(:name, :description, :publication_date, :yes_votes, :not_votes, :image, :state, :speaker)
     end
 end

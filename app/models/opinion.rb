@@ -18,7 +18,7 @@ class Opinion < ActiveRecord::Base
     belongs_to :user
     has_many :opinion_report
     
-    validates :content, :presence => true
+    validates :content, :presence => true, :format => {:with => /\A(?!.*(mamerto|puta|puto|malparido|gonorrea|tarado|bobo|estúpido|estupido|idiota|mongólico|mongolico|retrasado|atolondrado|pichurria|gonorriento|percanta|pirobo|pirovo|zunga|sunga|guisa|marica|maricon|maricón|perra|sapo|huevón|huevon|guevon|guevón|balurdo|locota|garbimba|gurrupleta|piroberta|carechimba|care chimba|fufa|fufurufa|mierda|jodase|jódase|jodanse|jódanse|coscorria|basofia|bazofia|cretino|baboso|cagado|cagar|cagada|cague|cagaste|cagó|cagaron|verga)).*\z/, :message => "La opinión tiene palabras que no están permitidas."}
     validates :date, :presence => true
     validates :like, :presence => true, :format => {:with => /\A\d+\z/, :message => "el campo \"likes\" no tiene el formato correcto, inténtelo de nuevo."}
     

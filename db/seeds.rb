@@ -74,14 +74,19 @@ puts 'Llenando LawProjects'
     law.galleries.create!(
     route: Faker::File.file_name('uploads', Faker::Config.random.seed, 'jpg', '/'))
   end
-  
-  rand(1..4).times do |row|
-    ProjectTag.create!(
-    tag_id: law.id, 
-    law_project_id: rand(1..8))
+
+donetags = []
+  rand(1..4).times do |raw|  
+    basetag=rand(1..9)
+    if !donetags.include?(basetag)
+      ProjectTag.create!(
+      tag_id: basetag, 
+      law_project_id: law.id)
+      donetags.push(basetag)
+    end
   end
-    
-  1.times do |row|
+  
+  1.times do |raw|
     
     user=User.create(email: Faker::Internet.email,
     password: 'topsecret', 
@@ -91,7 +96,7 @@ puts 'Llenando LawProjects'
     user_name: Faker::Twitter.screen_name,
     birth_name: Faker::Superhero.name,
     description: Faker::ChuckNorris.fact)
-    
+    user.skip_confirmation!
     user.save!
     
     rand(1..10).times do
@@ -100,7 +105,7 @@ puts 'Llenando LawProjects'
       date: Faker::Date.backward(1),
       like: Faker::Number.number(2),
       pro: Faker::Boolean.boolean,
-      user_id: rand(1..user.id),
+      user_id: rand(1..user.id+1),
       law_project_id: law.id
       )
     end
