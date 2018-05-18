@@ -105,7 +105,7 @@ donetags = []
       date: Faker::Date.backward(1),
       like: Faker::Number.number(2),
       pro: Faker::Boolean.boolean,
-      user_id: rand(1..user.id),
+      user_id: rand(1..user.id+1),
       law_project_id: law.id
       )
     end
