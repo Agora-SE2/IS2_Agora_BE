@@ -7,16 +7,19 @@ class LawProjectsController < ApplicationController
   # GET /law_projects.json
   def index
       if params[:name]
-         render json: @law_projects= LawProject.get_by_name(params[:name])
+         @law_projects= LawProject.get_by_name(params[:name])
       else
-         render json: @law_projects = LawProject.all
+         @law_projects = LawProject.all
         #@law_projects = LawProject.paginate(:page => params[:page], :per_page => 10)
       end
       if params[:tag]
-         render json: @law_projects= @law_projects.get_by_tag(params[:tag])
+         @law_projects= @law_projects.get_by_tag(params[:tag])
       end
-    render json: @law_projects.paginate(:page => params[:page], :per_page => 10)
-    
+      if params[:pagescount]
+        render json: @law_projects.paginate(:page => params[:page], :per_page => 10).total_pages
+      else
+        render json: @law_projects.paginate(:page => params[:page], :per_page => 10)
+      end
   end
 
   # GET /law_projects/1
