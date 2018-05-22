@@ -10,11 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 20180518090741) do
-=======
 ActiveRecord::Schema.define(version: 20180329033742) do
->>>>>>> Alejandro
 
   create_table "featured_projects", force: :cascade do |t|
     t.integer  "year"
