@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180329033742) do
+ActiveRecord::Schema.define(version: 20180518090741) do
 
   create_table "featured_projects", force: :cascade do |t|
     t.integer  "year"
@@ -35,6 +35,9 @@ ActiveRecord::Schema.define(version: 20180329033742) do
     t.integer  "yes_votes"
     t.integer  "not_votes"
     t.string   "image"
+    t.string   "speaker"
+    t.integer  "state"
+    t.boolean  "ready"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
   end
@@ -85,15 +88,10 @@ ActiveRecord::Schema.define(version: 20180329033742) do
   end
 
   create_table "project_tags", force: :cascade do |t|
-    t.integer  "tag_id"
     t.integer  "law_project_id"
+    t.integer  "tag_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
-  end
-
-  create_table "project_tags", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "tags", force: :cascade do |t|
