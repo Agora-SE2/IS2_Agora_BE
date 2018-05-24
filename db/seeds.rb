@@ -67,13 +67,13 @@ puts 'Listo Tags'
 puts 'Llenando LawProjects'
 json.each do |a|
   if a['estado_del_proyecto_de_ley']!="LEY" and a['estado_del_proyecto_de_ley']!="ARCHIVADO" and a['estado_del_proyecto_de_ley']!="RETIRADO"
-    law=LawProject.create!(name: a['nombre_del_proyecto_de_ley'],
-    description: a['senado'], 
+    law=LawProject.create!(name: a['nombre_del_proyecto_de_ley'].downcase.capitalize,
+    description: a['senado'].downcase.capitalize, 
     publication_date: Faker::Date.backward(1),
     yes_votes: Faker::Number.number(3), 
     not_votes: Faker::Number.number(3),
-    speaker: a['tipo_de_proyecto'],
-    state: a['estado_del_proyecto_de_ley'],
+    speaker: a['tipo_de_proyecto'].titleize,
+    state: a['estado_del_proyecto_de_ley'].downcase.capitalize,
     ready: 0)
   
   
