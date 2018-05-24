@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 20180518090741) do
     t.integer  "not_votes"
     t.string   "image"
     t.string   "speaker"
-    t.integer  "state"
+    t.string   "state"
     t.boolean  "ready"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false

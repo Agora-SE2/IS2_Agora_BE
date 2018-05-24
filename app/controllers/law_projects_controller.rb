@@ -23,7 +23,9 @@ class LawProjectsController < ApplicationController
   # GET /law_projects/1.json
   def show
     respond_to do |format|
-      format.html
+      format.html do
+        render json: @law_project, include: ['tags',"opinions.user"]
+      end
       format.pdf do
         render  :pdf => "file.pdf", :template => 'report/index.html.erb'
       end
