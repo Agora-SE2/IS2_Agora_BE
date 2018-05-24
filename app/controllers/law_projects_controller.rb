@@ -15,7 +15,11 @@ class LawProjectsController < ApplicationController
       if params[:tag]
          @law_projects= @law_projects.get_by_tag(params[:tag])
       end
-    render json: @law_projects.paginate(:page => params[:page], :per_page => 10)
+      if params[:pagescount]
+        render json: @law_projects.paginate(:page => params[:page], :per_page => 10).total_pages
+      else
+        render json: @law_projects.paginate(:page => params[:page], :per_page => 10)
+      end
     
   end
 
