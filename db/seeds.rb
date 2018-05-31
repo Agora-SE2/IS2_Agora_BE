@@ -5,6 +5,11 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+require 'net/http'
+source = 'https://www.datos.gov.co/resource/gd35-72eh.json'
+resp = Net::HTTP.get_response(URI.parse(source))
+data = resp.body
+json = ActiveSupport::JSON.decode(data)
 
 require 'faker'
 
@@ -60,59 +65,61 @@ end
 puts 'Listo Tags'
 
 puts 'Llenando LawProjects'
-100.times do |row|
+json.each do |a|
+  if a['estado_del_proyecto_de_ley']!="LEY" and a['estado_del_proyecto_de_ley']!="ARCHIVADO" and a['estado_del_proyecto_de_ley']!="RETIRADO"
+    law=LawProject.create!(name: a['nombre_del_proyecto_de_ley'].downcase.capitalize,
+    description: a['senado'].downcase.capitalize, 
+    publication_date: Faker::Date.backward(1),
+    yes_votes: Faker::Number.number(3), 
+    not_votes: Faker::Number.number(3),
+    speaker: a['tipo_de_proyecto'].titleize,
+    state: a['estado_del_proyecto_de_ley'].downcase.capitalize,
+    ready: 0)
   
-  law=LawProject.create!(name: Faker::Name.first_name,
-  description: Faker::Lorem.paragraph, 
-  publication_date: Faker::Date.backward(1),
-  yes_votes: Faker::Number.number(3), 
-  not_votes: Faker::Number.number(3),
-  speaker: Faker::Name.name,
-  state: 0)
   
-  rand(1..10).times do
-    law.galleries.create!(
-    route: Faker::File.file_name('uploads', Faker::Config.random.seed, 'jpg', '/'))
-  end
-
-donetags = []
-  rand(1..4).times do |raw|  
-    basetag=rand(1..9)
-    if !donetags.include?(basetag)
-      ProjectTag.create!(
-      tag_id: basetag, 
-      law_project_id: law.id)
-      donetags.push(basetag)
-    end
-  end
-  
-  1.times do |raw|
-    
-    user=User.create(email: Faker::Internet.email,
-    password: 'topsecret', 
-    password_confirmation: 'topsecret',
-    is_admin: Faker::Boolean,
-    sign_in_count: Faker::Number.number(2),
-    user_name: Faker::Twitter.screen_name,
-    birth_name: Faker::Superhero.name,
-    description: Faker::ChuckNorris.fact)
-    user.skip_confirmation!
-    user.save!
-    
     rand(1..10).times do
-      law.opinions.create!(
-      content: Faker::ChuckNorris.fact,
-      date: Faker::Date.backward(1),
-      like: Faker::Number.number(2),
-      pro: Faker::Boolean.boolean,
-      user_id: rand(1..user.id+1),
-      law_project_id: law.id
-      )
+      law.galleries.create!(
+      route: Faker::File.file_name('uploads', Faker::Config.random.seed, 'jpg', '/'))
+    end
+  
+    donetags = []
+    rand(1..4).times do |raw|  
+      basetag=rand(1..9)
+      if !donetags.include?(basetag)
+        ProjectTag.create!(
+        tag_id: basetag, 
+        law_project_id: law.id)
+        donetags.push(basetag)
+      end
     end
     
+    1.times do |raw|
+      
+      user=User.create(email: Faker::Internet.email,
+      password: 'topsecret', 
+      password_confirmation: 'topsecret',
+      is_admin: Faker::Boolean,
+      sign_in_count: Faker::Number.number(2),
+      user_name: Faker::Twitter.screen_name,
+      birth_name: Faker::Superhero.name,
+      description: Faker::ChuckNorris.fact)
+      user.skip_confirmation!
+      user.save!
+      
+      rand(1..10).times do
+        law.opinions.create!(
+        content: Faker::ChuckNorris.fact,
+        date: Faker::Date.backward(1),
+        like: Faker::Number.number(2),
+        pro: Faker::Boolean.boolean,
+        user_id: rand(1..user.id+1),
+        law_project_id: law.id
+        )
+      end
+      
+    end
+    puts 'Listo Users'
   end
-  puts 'Listo Users'
-   
 end
 
 puts 'Completado LawProject'

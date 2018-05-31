@@ -36,7 +36,12 @@ ActiveRecord::Schema.define(version: 20180518090741) do
     t.integer  "not_votes"
     t.string   "image"
     t.string   "speaker"
+<<<<<<< HEAD
     t.integer  "state"
+=======
+    t.string   "state"
+    t.boolean  "ready"
+>>>>>>> 9955ef2ac4d5d4243f20d583a412661190e996f8
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
   end
@@ -87,8 +92,10 @@ ActiveRecord::Schema.define(version: 20180518090741) do
   end
 
   create_table "project_tags", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "law_project_id"
+    t.integer  "tag_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
   create_table "tags", force: :cascade do |t|
